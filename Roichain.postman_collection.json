@@ -2217,6 +2217,68 @@
 						"description": "Calculate a cryptographic hash.\n\nThe input parameter contains hexidecimal bytes of arbitrary length. The example here uses the UTF-8 text string “snowstorm” converted to hexidecimal bytes. [More info](https://docs.avax.network/v1.0/en/api/evm/#calculate-a-cryptographic-hash)"
 					},
 					"response": []
+				},
+				{
+					"name": "eth_gasPrice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 3,\n    \"method\": \"eth_gasPrice\",\n    \"params\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/rpc",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ext",
+								"bc",
+								"C",
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eth_estimateGas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 4,\n    \"method\": \"eth_estimateGas\",\n    \"params\": [\n        {\n            \"from\": \"{{cchainAddress}}\",\n            \"to\": \"{{cchainAddress}}\",\n            \"gasPrice\": \"0x746a52880\",\n            \"value\": \"0x3635c9adc5dea00000\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/rpc",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ext",
+								"bc",
+								"C",
+								"rpc"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "This document describes the API of the C-Chain, which is an instance of the Ethereum Virtual Machine (EVM.)\n\nNote: Ethereum has its own notion of `networkID` and `chainID`. The C-Chain uses `1` and `43110` for these values, obtained using the `net_version` and `eth_chainId` methods shown below. These have no relationship to AVA’s view of networkID and chainID, and are purely internal to the C-Chain. [More info](https://docs.avax.network/v1.0/en/api/evm)"
@@ -4638,6 +4700,314 @@
 				}
 			],
 			"description": "This API allows clients to interact with the P-Chain (Platform Chain), which maintains Avalanche’s validator set and handles blockchain creation. [More info](https://docs.avax.network/v1.0/en/api/platform)"
+		},
+		{
+			"name": "Ortelius",
+			"item": [
+				{
+					"name": "List Transactions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": [\n        \"fuji18jma8ppw3nhx5r4ap8clazz0dps7rv5u6wmu4t\"\n    ],\n    \"sort\": [\n        \"timestamp-desc\"\n    ],\n    \"disableCount\": [\n        \"1\"\n    ],\n    \"chainID\": [\n        \"11111111111111111111111111111111LpoYY\"\n    ],\n    \"disableGenesis\": [\n        \"false\"\n    ],\n    \"limit\": [\n        \"20\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://45.76.183.104:8080/v2/transactions",
+							"protocol": "http",
+							"host": [
+								"45",
+								"76",
+								"183",
+								"104"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"transactions"
+							]
+						},
+						"description": "Find transactions that have been accepted."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://45.76.183.104:8080/v2/transactions/2jEugPDFN89KXLEXtf5oKp5spsJawTht2zP4kKJjkQwwRsDdLX",
+							"protocol": "http",
+							"host": [
+								"45",
+								"76",
+								"183",
+								"104"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"transactions",
+								"2jEugPDFN89KXLEXtf5oKp5spsJawTht2zP4kKJjkQwwRsDdLX"
+							]
+						},
+						"description": "Find a single transaction by its ID."
+					},
+					"response": []
+				},
+				{
+					"name": "List Addresses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://45.76.183.104:8080/v2/addresses",
+							"protocol": "http",
+							"host": [
+								"45",
+								"76",
+								"183",
+								"104"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"addresses"
+							]
+						},
+						"description": "- Find addresses that have been referenced in accepted transactions.\n- Can be filtered by chainID or address"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://45.76.183.104:8080/v2/addresses/fuji1yx8d9uxhqkq080eq0y84axyqe6z3r5n4dwnd8g",
+							"protocol": "http",
+							"host": [
+								"45",
+								"76",
+								"183",
+								"104"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"addresses",
+								"fuji1yx8d9uxhqkq080eq0y84axyqe6z3r5n4dwnd8g"
+							]
+						},
+						"description": "Find a single address by its ID."
+					},
+					"response": []
+				},
+				{
+					"name": "List Assets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://45.76.183.104:8080/v2/assets",
+							"protocol": "http",
+							"host": [
+								"45",
+								"76",
+								"183",
+								"104"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"assets"
+							]
+						},
+						"description": "Find assets that have been created on the X-chain."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Asset",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://45.76.183.104:8080/v2/assets/2b5EBv57UhJ5QbcApsgpmr3NiQoqed3w15xKqmm1GQ1JytPtZ2",
+							"protocol": "http",
+							"host": [
+								"45",
+								"76",
+								"183",
+								"104"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"assets",
+								"2b5EBv57UhJ5QbcApsgpmr3NiQoqed3w15xKqmm1GQ1JytPtZ2"
+							]
+						},
+						"description": "Find a single asset by its ID."
+					},
+					"response": []
+				},
+				{
+					"name": "List Outputs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://45.76.183.104:8080/v2/outputs?address=X-avax1y8cyrzn2kg4udccs5d625gkac7a99pe452cy5u&spent=false",
+							"protocol": "http",
+							"host": [
+								"45",
+								"76",
+								"183",
+								"104"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"outputs"
+							],
+							"query": [
+								{
+									"key": "address",
+									"value": "X-avax1y8cyrzn2kg4udccs5d625gkac7a99pe452cy5u"
+								},
+								{
+									"key": "spent",
+									"value": "false"
+								}
+							]
+						},
+						"description": "Find outputs that have been created by an accepted transaction."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Output",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://45.76.183.104:8080/v2/outputs/114RMPhYM7do7cDX7KWSqFeLkbUXFrLKcqPL4GMdjTvemPzvc",
+							"protocol": "http",
+							"host": [
+								"45",
+								"76",
+								"183",
+								"104"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"outputs",
+								"114RMPhYM7do7cDX7KWSqFeLkbUXFrLKcqPL4GMdjTvemPzvc"
+							]
+						},
+						"description": "Find a single output by its ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a C-Chain Block",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://45.76.183.104:8080/v2/ctxdata/10",
+							"protocol": "http",
+							"host": [
+								"45",
+								"76",
+								"183",
+								"104"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"ctxdata",
+								"10"
+							]
+						},
+						"description": "Find a single block by its number."
+					},
+					"response": []
+				},
+				{
+					"name": "List C-Chain Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://45.76.183.104:8080/v2/ctransactions?toAddress=0x34ec164fd085ae43906eab6dffd1eae0a0855a2a&blockStart=797380&blockEnd=797381",
+							"protocol": "http",
+							"host": [
+								"45",
+								"76",
+								"183",
+								"104"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"ctransactions"
+							],
+							"query": [
+								{
+									"key": "toAddress",
+									"value": "0x34ec164fd085ae43906eab6dffd1eae0a0855a2a"
+								},
+								{
+									"key": "blockStart",
+									"value": "797380"
+								},
+								{
+									"key": "blockEnd",
+									"value": "797381"
+								}
+							]
+						},
+						"description": "Find accepted C-Chain transactions."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Raw C-Chain Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://45.76.183.104:8080/v2/rawtransaction/pxiBJkwnaKhaJdYkkfAVRZXrJj47jJF3QAvsasbYF2Rfweoog",
+							"protocol": "http",
+							"host": [
+								"45",
+								"76",
+								"183",
+								"104"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"rawtransaction",
+								"pxiBJkwnaKhaJdYkkfAVRZXrJj47jJF3QAvsasbYF2Rfweoog"
+							]
+						},
+						"description": "Get an accepted C-Chain transaction by its ID."
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
