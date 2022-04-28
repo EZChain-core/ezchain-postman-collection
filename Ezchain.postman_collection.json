@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "a1ff7104-96a2-408b-987f-a94c71825484",
-		"name": "Roichain",
+		"_postman_id": "72e39b9d-49f8-416f-89db-118fcb994d21",
+		"name": "Ezchain",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -34,7 +34,7 @@
 								"admin"
 							]
 						},
-						"description": "Assign an API an alias, a different endpoint for the API. The original endpoint will still work. This change only affects this node; other nodes will not know about this alias. [More info](https://docs.avax.network/build/apis/admin-api#admin-alias)"
+						"description": "Assign an API an alias, a different endpoint for the API. The original endpoint will still work. This change only affects this node; other nodes will not know about this alias."
 					},
 					"response": []
 				},
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"admin.aliasChain\",\n    \"params\": {\n        \"chain\":\"{{avalanceBlockchainId}}\",\n        \"alias\":\"myBlockchainAlias\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"admin.aliasChain\",\n    \"params\": {\n        \"chain\":\"{{ezchainBlockchainId}}\",\n        \"alias\":\"myBlockchainAlias\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -64,7 +64,7 @@
 								"admin"
 							]
 						},
-						"description": "Give a blockchain an alias, a different name that can be used any place the blockchain’s ID is used. [More info](https://docs.avax.network/build/apis/admin-api#admin-aliaschain)"
+						"description": "Give a blockchain an alias, a different name that can be used any place the blockchain’s ID is used."
 					},
 					"response": []
 				},
@@ -94,7 +94,67 @@
 								"admin"
 							]
 						},
-						"description": "Dump the mutex statistics of the node to the specified file. [More info](https://docs.avax.network/build/apis/admin-api#admin-lockprofile)"
+						"description": "Dump the mutex statistics of the node to the specified file."
+					},
+					"response": []
+				},
+				{
+					"name": "getLoggerLevel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"admin.getLoggerLevel\",\n    \"params\" :{\n        \"loggerName\":\"C\" \n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/admin",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ext",
+								"admin"
+							]
+						},
+						"description": "Returns log and display levels of loggers."
+					},
+					"response": []
+				},
+				{
+					"name": "loadVMs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"admin.loadVMs\",\n    \"params\" :{}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/admin",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ext",
+								"admin"
+							]
+						},
+						"description": "Dynamically loads any virtual machines installed on the node as plugins."
 					},
 					"response": []
 				},
@@ -124,7 +184,7 @@
 								"admin"
 							]
 						},
-						"description": "Dump the mutex statistics of the node to the specified file. [More info](https://docs.avax.network/build/apis/admin-api#admin-lockprofile)"
+						"description": "Dump the mutex statistics of the node to the specified file."
 					},
 					"response": []
 				},
@@ -154,7 +214,37 @@
 								"admin"
 							]
 						},
-						"description": "Dump the mutex statistics of the node to the specified file. [More info](https://docs.avax.network/build/apis/admin-api#admin-memoryprofile)"
+						"description": "Dump the mutex statistics of the node to the specified file."
+					},
+					"response": []
+				},
+				{
+					"name": "setLoggerLevel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"admin.setLoggerLevel\",\n    \"params\" :{\n        \"loggerName\": \"C\",\n        \"logLevel\": \"DEBUG\",\n        \"displayLevel\": \"INFO\" \n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/admin",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ext",
+								"admin"
+							]
+						},
+						"description": "Sets log and display levels of loggers."
 					},
 					"response": []
 				},
@@ -184,7 +274,7 @@
 								"admin"
 							]
 						},
-						"description": "Start profiling the CPU utilization of the node. Will write the profile to the specified file on stop. [More info](https://docs.avax.network/build/apis/admin-api#admin-startcpuprofiler)"
+						"description": "Start profiling the CPU utilization of the node. Will write the profile to the specified file on stop."
 					},
 					"response": []
 				},
@@ -214,12 +304,12 @@
 								"admin"
 							]
 						},
-						"description": "Stop the CPU profile that was previously started. [More info](https://docs.avax.network/build/apis/admin-api#admin-stopcpuprofiler)"
+						"description": "Stop the CPU profile that was previously started. [More info](https://docs.ezchain.com/build/apis/admin-api#admin-stopcpuprofiler)"
 					},
 					"response": []
 				}
 			],
-			"description": "This API can be used for measuring node health and debugging. [More info](https://docs.avax.network/v1.0/en/api/admin)"
+			"description": "This API can be used for measuring node health and debugging. [More info](https://docs.ezchain.com/v1.0/en/api/admin)"
 		},
 		{
 			"name": "Auth",
@@ -250,7 +340,7 @@
 								"auth"
 							]
 						},
-						"description": "Creates a new authorization token that grants access to one or more API endpoints.\n [More info](https://docs.avax.network/build/apis/auth-api#auth-newtoken)"
+						"description": "Creates a new authorization token that grants access to one or more API endpoints.\n [More info](https://docs.ezchain.com/build/apis/auth-api#auth-newtoken)"
 					},
 					"response": []
 				},
@@ -280,7 +370,7 @@
 								"auth"
 							]
 						},
-						"description": "Revoke a previously generated token. The given token will no longer grant access to any endpoint.\nIf the token is invalid, does nothing. [More info](https://docs.avax.network/build/apis/auth-api#auth-revoketoken)"
+						"description": "Revoke a previously generated token. The given token will no longer grant access to any endpoint.\nIf the token is invalid, does nothing. [More info](https://docs.ezchain.com/build/apis/auth-api#auth-revoketoken)"
 					},
 					"response": []
 				},
@@ -310,12 +400,12 @@
 								"auth"
 							]
 						},
-						"description": "Change this node's authorization token password. Any authorization tokens created under an old password will become invalid. [More info](https://docs.avax.network/build/apis/auth-api#auth-changepassword)"
+						"description": "Change this node's authorization token password. Any authorization tokens created under an old password will become invalid. [More info](https://docs.ezchain.com/build/apis/auth-api#auth-changepassword)"
 					},
 					"response": []
 				}
 			],
-			"description": "This API can be used for measuring node health and debugging. [More info](https://docs.avax.network/v1.0/en/api/admin)"
+			"description": "This API can be used for measuring node health and debugging. [More info](https://docs.ezchain.com/v1.0/en/api/admin)"
 		},
 		{
 			"name": "AVM",
@@ -347,7 +437,7 @@
 								"avm"
 							]
 						},
-						"description": "Given a JSON representation of this Virtual Machine’s genesis state, create the byte representation of that state. [More info](https://docs.avax.network/v1.0/en/api/avm/#avmbuildgenesis)"
+						"description": "Given a JSON representation of this Virtual Machine’s genesis state, create the byte representation of that state. [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmbuildgenesis)"
 					},
 					"response": []
 				},
@@ -358,7 +448,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"avm.createAddress\",\n    \"params\": {\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\" \n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"avm.createAddress\",\n    \"params\": {\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\" \n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -378,7 +468,7 @@
 								"X"
 							]
 						},
-						"description": "Create a new address controlled by the given user. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-createaddress)"
+						"description": "Create a new address controlled by the given user. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-createaddress)"
 					},
 					"response": []
 				},
@@ -389,7 +479,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.createAsset\",\n    \"params\" :{\n        \"name\":\"myVariableCapAsset\",\n        \"symbol\":\"MFCA\",\n        \"denomination\": 0,  \n        \"minterSets\":[\n            {\n                \"minters\":[\n                    \"{{xchainAddress}}\"\n                ],\n                \"threshold\": 1\n            }\n        ],\n        \"from\": [\"{{xchainAddress}}\"],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\" \n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.createAsset\",\n    \"params\" :{\n        \"name\":\"myVariableCapAsset\",\n        \"symbol\":\"MFCA\",\n        \"denomination\": 0,  \n        \"minterSets\":[\n            {\n                \"minters\":[\n                    \"{{xchainAddress}}\"\n                ],\n                \"threshold\": 1\n            }\n        ],\n        \"from\": [\"{{xchainAddress}}\"],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\" \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -409,7 +499,7 @@
 								"X"
 							]
 						},
-						"description": "Create a new variable-cap, fungible asset. No units of the asset exist at initialization. Minters can mint units of this asset using `createMintTx`, `signMintTx` and `issueTx`. The asset can be sent with `avm.send`. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-createvariablecapasset)"
+						"description": "Create a new variable-cap, fungible asset. No units of the asset exist at initialization. Minters can mint units of this asset using `createMintTx`, `signMintTx` and `issueTx`. The asset can be sent with `avm.send`. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-createvariablecapasset)"
 					},
 					"response": []
 				},
@@ -420,7 +510,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.createFixedCapAsset\",\n    \"params\" :{\n        \"name\": \"Test Token\",\n        \"symbol\":\"TEST\",\n        \"denomination\": 0,  \n        \"initialHolders\": [\n            {\n                \"address\":\"{{xchainAddress}}\",\n                \"amount\":400\n            }\n        ],\n        \"from\": [\"{{xchainAddress}}\"],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\" \n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.createFixedCapAsset\",\n    \"params\" :{\n        \"name\": \"Test Token\",\n        \"symbol\":\"TEST\",\n        \"denomination\": 0,  \n        \"initialHolders\": [\n            {\n                \"address\":\"{{xchainAddress}}\",\n                \"amount\":400\n            }\n        ],\n        \"from\": [\"{{xchainAddress}}\"],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\" \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -440,7 +530,7 @@
 								"X"
 							]
 						},
-						"description": "Create a new fixed-cap, fungible asset. A quantity of it is created at initialization and then no more is ever created. The asset can be sent with `avm.send`. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-createfixedcapasset)"
+						"description": "Create a new fixed-cap, fungible asset. A quantity of it is created at initialization and then no more is ever created. The asset can be sent with `avm.send`. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-createfixedcapasset)"
 					},
 					"response": []
 				},
@@ -451,7 +541,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.createNFTAsset\",\n    \"params\" :{\n        \"name\":\"Coincert\",\n        \"symbol\":\"TIXX\",\n        \"minterSets\":[\n            {\n                \"minters\":[\n                    \"{{xchainAddress}}\"\n                ],\n                \"threshold\": 1\n            },\n            {\n                \"minters\":[\n                    \"{{xchainAddress}}\"\n                ],\n                \"threshold\": 1\n            }\n        ],\n        \"from\": [\"{{xchainAddress}}\"],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\" \n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.createNFTAsset\",\n    \"params\" :{\n        \"name\":\"Coincert\",\n        \"symbol\":\"TIXX\",\n        \"minterSets\":[\n            {\n                \"minters\":[\n                    \"{{xchainAddress}}\"\n                ],\n                \"threshold\": 1\n            },\n            {\n                \"minters\":[\n                    \"{{xchainAddress}}\"\n                ],\n                \"threshold\": 1\n            }\n        ],\n        \"from\": [\"{{xchainAddress}}\"],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\" \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -471,7 +561,7 @@
 								"X"
 							]
 						},
-						"description": "Create a new non-fungible asset. No units of the asset exist at initialization. Minters can mint units of this asset using `mintTx` and `signMintTx`. The asset can be sent with `avm.sendNFT`. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-createnftasset)"
+						"description": "Create a new non-fungible asset. No units of the asset exist at initialization. Minters can mint units of this asset using `mintTx` and `signMintTx`. The asset can be sent with `avm.sendNFT`. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-createnftasset)"
 					},
 					"response": []
 				},
@@ -482,7 +572,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.createVariableCapAsset\",\n    \"params\" :{\n        \"name\":\"myVariableCapAsset\",\n        \"symbol\":\"MFCA\",\n        \"denomination\": 0,  \n        \"minterSets\":[\n            {\n                \"minters\":[\n                    \"{{xchainAddress}}\"\n                ],\n                \"threshold\": 1\n            }\n        ],\n        \"from\": [\"{{xchainAddress}}\"],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\" \n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.createVariableCapAsset\",\n    \"params\" :{\n        \"name\":\"myVariableCapAsset\",\n        \"symbol\":\"MFCA\",\n        \"denomination\": 0,  \n        \"minterSets\":[\n            {\n                \"minters\":[\n                    \"{{xchainAddress}}\"\n                ],\n                \"threshold\": 1\n            }\n        ],\n        \"from\": [\"{{xchainAddress}}\"],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\" \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -502,7 +592,7 @@
 								"X"
 							]
 						},
-						"description": "Create a new variable-cap, fungible asset. No units of the asset exist at initialization. Minters can mint units of this asset using `createMintTx`, `signMintTx` and `issueTx`. The asset can be sent with `avm.send`. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-createvariablecapasset)"
+						"description": "Create a new variable-cap, fungible asset. No units of the asset exist at initialization. Minters can mint units of this asset using `createMintTx`, `signMintTx` and `issueTx`. The asset can be sent with `avm.send`. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-createvariablecapasset)"
 					},
 					"response": []
 				},
@@ -513,7 +603,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.export\",\n    \"params\" :{\n        \"from\": [\"{{xchainAddress}}\"],\n        \"to\":\"{{cchainbech32address}}\",\n        \"amount\": 4000001000000         ,\n        \"assetID\": \"AVAX\",\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\" \n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.export\",\n    \"params\" :{\n        \"from\": [\"{{xchainAddress}}\"],\n        \"to\":\"{{cchainbech32address}}\",\n        \"amount\": 4000001000000         ,\n        \"assetID\": \"EZC\",\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\" \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -533,38 +623,7 @@
 								"X"
 							]
 						},
-						"description": "Export a non-AVAX asset from the X-Chain to the C-Chain. After calling this method, you must call the C-Chain’s `import` method to complete the transfer. [More info](https://docs.avax.network/v1.0/en/api/avm/#avmexport)"
-					},
-					"response": []
-				},
-				{
-					"name": "exportAVAX",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.exportAVAX\",\n    \"params\" :{\n        \"from\": [\"{{xchainAddress}}\"],\n        \"to\":\"{{cchainbech32address}}\",\n        \"amount\": 4000001000000,\n        \"destinationChain\": \"C\",\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\" \n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/X",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"ext",
-								"bc",
-								"X"
-							]
-						},
-						"description": "Export AVAX from the X-Chain to both the P-Chain as well as the C-Chain. After calling this method, you must call either the P-Chain’s `importAVAX` method or the C-Chain's `importAVAX` method to complete the transfer. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-exportavax)"
+						"description": "Export a non-EZC asset from the X-Chain to the C-Chain. After calling this method, you must call the C-Chain’s `import` method to complete the transfer. [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmexport)"
 					},
 					"response": []
 				},
@@ -575,7 +634,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.exportKey\",\n    \"params\" :{\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\",\n        \"address\": \"{{xchainAddress}}\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.exportKey\",\n    \"params\" :{\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\",\n        \"address\": \"{{xchainAddress}}\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -595,7 +654,38 @@
 								"X"
 							]
 						},
-						"description": "Get the private key that controls a given address.\nThe returned private key can be added to a user with `avm.importKey`. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-exportkey)"
+						"description": "Get the private key that controls a given address.\nThe returned private key can be added to a user with `avm.importKey`. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-exportkey)"
+					},
+					"response": []
+				},
+				{
+					"name": "getAddressTxs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.getAllBalances\",\n    \"params\" :{\n        \"address\":\"{{xchainAddress}}\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/X",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ext",
+								"bc",
+								"X"
+							]
+						},
+						"description": "Returns all transactions that change the balance of the given address. A transaction is said to change an address's balance if either is true:\n\n*   A UTXO that the transaction consumes was at least partially owned by the address.\n*   A UTXO that the transaction produces is at least partially owned by the address.\n    \n\nNote: Indexing (`index-transactions`) must be enabled in the X-chain config. [More info](https://docs.ezchain.com/build/ezcgo-apis/x-chain#avm-get-address-txs-api)"
 					},
 					"response": []
 				},
@@ -626,7 +716,7 @@
 								"X"
 							]
 						},
-						"description": "Get the balances of all assets controlled by a given address. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-getallbalances)"
+						"description": "Get the balances of all assets controlled by a given address. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-getallbalances)"
 					},
 					"response": []
 				},
@@ -637,7 +727,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.getAssetDescription\",\n    \"params\" :{\n        \"assetID\" :\"{{avaxAssetId}}\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.getAssetDescription\",\n    \"params\" :{\n        \"assetID\" :\"{{ezcAssetId}}\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -657,7 +747,7 @@
 								"X"
 							]
 						},
-						"description": "Get information about an asset. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-getassetdescription)"
+						"description": "Get information about an asset. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-getassetdescription)"
 					},
 					"response": []
 				},
@@ -699,7 +789,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"jsonrpc\":\"2.0\",\n  \"id\"     : 1,\n  \"method\" :\"avm.getBalance\",\n  \"params\" :{\n      \"address\":\"{{xchainAddress}}\",\n      \"assetID\": \"{{avaxAssetId}}\"\n  }\n} ",
+							"raw": "{\n  \"jsonrpc\":\"2.0\",\n  \"id\"     : 1,\n  \"method\" :\"avm.getBalance\",\n  \"params\" :{\n      \"address\":\"{{xchainAddress}}\",\n      \"assetID\": \"{{ezcAssetId}}\"\n  }\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -719,7 +809,7 @@
 								"X"
 							]
 						},
-						"description": "Get the balance of an asset controlled by a given address. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-getbalance)"
+						"description": "Get the balance of an asset controlled by a given address. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-getbalance)"
 					},
 					"response": []
 				},
@@ -750,7 +840,7 @@
 								"X"
 							]
 						},
-						"description": "Returns the specified transaction [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-gettx)"
+						"description": "Returns the specified transaction [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-gettx)"
 					},
 					"response": []
 				},
@@ -781,7 +871,7 @@
 								"X"
 							]
 						},
-						"description": "Get the status of a transaction sent to the network. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-gettxstatus)"
+						"description": "Get the status of a transaction sent to the network. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-gettxstatus)"
 					},
 					"response": []
 				},
@@ -812,7 +902,7 @@
 								"X"
 							]
 						},
-						"description": "Get the UTXOs that reference a given address. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-getutxos)"
+						"description": "Get the UTXOs that reference a given address. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-getutxos)"
 					},
 					"response": []
 				},
@@ -823,7 +913,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.import\",\n    \"params\" :{\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\",\n        \"sourceChain\": \"P\",\n        \"to\":\"{{xchainAddress}}\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.import\",\n    \"params\" :{\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\",\n        \"sourceChain\": \"P\",\n        \"to\":\"{{xchainAddress}}\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -843,38 +933,7 @@
 								"X"
 							]
 						},
-						"description": "Finalize a transfer of AVAX from either the P-Chain to the X-Chain or the C-Chain to the X-Chain.\n\nBefore this method is called, you must call either the P-Chain’s `exportAVAX` method or the C-Chain’s `exportAVAX` method to initiate the transfer. [More info](https://docs.avax.network/v1.0/en/api/avm/#avmimportavax)"
-					},
-					"response": []
-				},
-				{
-					"name": "importAVAX",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.importAVAX\",\n    \"params\" :{\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\",\n        \"sourceChain\": \"C\",\n        \"to\":\"{{xchainAddress}}\"\n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/X",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"ext",
-								"bc",
-								"X"
-							]
-						},
-						"description": "Finalize a transfer of AVAX from either the P-Chain to the X-Chain or the C-Chain to the X-Chain.\n\nBefore this method is called, you must call either the P-Chain’s `exportAVAX` method or the C-Chain’s `exportAVAX` method to initiate the transfer. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-importavax)"
+						"description": "Finalize a transfer of EZC from either the P-Chain to the X-Chain or the C-Chain to the X-Chain.\n\nBefore this method is called, you must call either the P-Chain’s `exportEZC` method or the C-Chain’s `exportEZC` method to initiate the transfer. [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmimportezc)"
 					},
 					"response": []
 				},
@@ -905,7 +964,7 @@
 								"X"
 							]
 						},
-						"description": "Send a signed transaction to the network. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-issuetx)"
+						"description": "Send a signed transaction to the network. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-issuetx)"
 					},
 					"response": []
 				},
@@ -916,7 +975,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.importKey\",\n    \"params\" :{\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\",\n        \"privateKey\":\"{{privkey}}\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.importKey\",\n    \"params\" :{\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\",\n        \"privateKey\":\"{{privkey}}\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -936,7 +995,7 @@
 								"X"
 							]
 						},
-						"description": "Give a user control over an address by providing the private key that controls the address. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-importkey)"
+						"description": "Give a user control over an address by providing the private key that controls the address. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-importkey)"
 					},
 					"response": []
 				},
@@ -947,7 +1006,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"avm.listAddresses\",\n    \"params\": {\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\" \n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"avm.listAddresses\",\n    \"params\": {\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\" \n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -967,7 +1026,7 @@
 								"X"
 							]
 						},
-						"description": "List addresses controlled by the given user. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-listaddresses)"
+						"description": "List addresses controlled by the given user. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-listaddresses)"
 					},
 					"response": []
 				},
@@ -978,7 +1037,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.mint\",\n    \"params\" :{\n        \"amount\": 10000000,\n        \"assetID\": \"2qnR9pLQTDZ9boSbcrcjS4n1DJJkzbkNsJzgwYvmRy8uv47fZT\",\n        \"from\": [\"{{xchainAddress}}\"],\n        \"to\": \"{{xchainAddress}}\",\n        \"minters\": [\n            \"{{xchainAddress}}\"\n        ],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\" \n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.mint\",\n    \"params\" :{\n        \"amount\": 10000000,\n        \"assetID\": \"2qnR9pLQTDZ9boSbcrcjS4n1DJJkzbkNsJzgwYvmRy8uv47fZT\",\n        \"from\": [\"{{xchainAddress}}\"],\n        \"to\": \"{{xchainAddress}}\",\n        \"minters\": [\n            \"{{xchainAddress}}\"\n        ],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\" \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -998,7 +1057,7 @@
 								"X"
 							]
 						},
-						"description": "Create an unsigned transaction to mint more of a variable-cap asset (an asset created with `avm.createVariableCapAsset`.) [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-mint)"
+						"description": "Create an unsigned transaction to mint more of a variable-cap asset (an asset created with `avm.createVariableCapAsset`.) [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-mint)"
 					},
 					"response": []
 				},
@@ -1009,7 +1068,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.mintNFT\",\n    \"params\" :{\n        \"assetID\":\"2KGdt2HpFKpTH5CtGZjYt5XPWs6Pv9DLoRBhiFfntbezdRvZWP\",\n        \"payload\":\"2EWh72jYQvEJF9NLk\",\n        \"from\": [\"{{xchainAddress}}\"],\n        \"to\":\"{{xchainAddress}}\",\n        \"minters\":[\n            \"{{xchainAddress}}\"\n        ],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\" ,\n        \"encoding\": \"hex\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avm.mintNFT\",\n    \"params\" :{\n        \"assetID\":\"2KGdt2HpFKpTH5CtGZjYt5XPWs6Pv9DLoRBhiFfntbezdRvZWP\",\n        \"payload\":\"2EWh72jYQvEJF9NLk\",\n        \"from\": [\"{{xchainAddress}}\"],\n        \"to\":\"{{xchainAddress}}\",\n        \"minters\":[\n            \"{{xchainAddress}}\"\n        ],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\" ,\n        \"encoding\": \"hex\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1029,7 +1088,7 @@
 								"X"
 							]
 						},
-						"description": "Mint more of a non-fungible asset (an asset created with `avm.createNFTAsset`.) [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-mintnft)"
+						"description": "Mint more of a non-fungible asset (an asset created with `avm.createNFTAsset`.) [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-mintnft)"
 					},
 					"response": []
 				},
@@ -1040,7 +1099,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.send\",\n    \"params\" :{ \n        \"assetID\" : \"{{avaxAssetId}}\",\n        \"amount\"  : 2000000000,\n        \"from\"    : [\"{{xchainAddress}}\"],\n        \"to\"      : \"{{xchainAddress}}\",\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"memo\"    : \"\",\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\" \n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.send\",\n    \"params\" :{ \n        \"assetID\" : \"{{ezcAssetId}}\",\n        \"amount\"  : 2000000000,\n        \"from\"    : [\"{{xchainAddress}}\"],\n        \"to\"      : \"{{xchainAddress}}\",\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"memo\"    : \"\",\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\" \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1060,7 +1119,7 @@
 								"X"
 							]
 						},
-						"description": "Send a quantity of an asset to an address. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-send)"
+						"description": "Send a quantity of an asset to an address. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-send)"
 					},
 					"response": []
 				},
@@ -1071,7 +1130,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.sendAsManager\",\n    \"params\" :{ \n        \"assetID\" : \"{{avaxAssetId}}\",\n        \"amount\"  : 2000000,\n        \"feeFrom\": [\"{{xchainAddress}}\"],\n        \"feeChangeAddr\": \"{{xchainAddress}}\",\n        \"from\"    : [\"{{xchainAddress}}\"],\n        \"to\"      : \"{{xchainAddress}}\",\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"memo\"    : \"{{memo}}\",\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\" \n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.sendAsManager\",\n    \"params\" :{ \n        \"assetID\" : \"{{ezcAssetId}}\",\n        \"amount\"  : 2000000,\n        \"feeFrom\": [\"{{xchainAddress}}\"],\n        \"feeChangeAddr\": \"{{xchainAddress}}\",\n        \"from\"    : [\"{{xchainAddress}}\"],\n        \"to\"      : \"{{xchainAddress}}\",\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"memo\"    : \"{{memo}}\",\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\" \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1091,7 +1150,7 @@
 								"X"
 							]
 						},
-						"description": "Send a quantity of an asset to an address. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-send)"
+						"description": "Send a quantity of an asset to an address. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-send)"
 					},
 					"response": []
 				},
@@ -1102,7 +1161,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.sendMultiple\",\n    \"params\" :{ \n        \"outputs\": [\n            {\n                \"assetID\" : \"{{avaxAssetId}}\",\n                \"to\"      : \"{{xchainAddress}}\",\n                \"amount\"  : 1000000000\n            }\n        ],\n        \"from\"    : [\"{{xchainAddress}}\"],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"memo\"    : \"{{memo}}\",\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\" \n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.sendMultiple\",\n    \"params\" :{ \n        \"outputs\": [\n            {\n                \"assetID\" : \"{{ezcAssetId}}\",\n                \"to\"      : \"{{xchainAddress}}\",\n                \"amount\"  : 1000000000\n            }\n        ],\n        \"from\"    : [\"{{xchainAddress}}\"],\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"memo\"    : \"{{memo}}\",\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\" \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1122,7 +1181,7 @@
 								"X"
 							]
 						},
-						"description": "Send a quantity of an asset to an address. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-sendmultiple)"
+						"description": "Send a quantity of an asset to an address. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-sendmultiple)"
 					},
 					"response": []
 				},
@@ -1133,7 +1192,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.sendNFT\",\n    \"params\" :{ \n        \"assetID\" :\"2KGdt2HpFKpTH5CtGZjYt5XPWs6Pv9DLoRBhiFfntbezdRvZWP\",\n        \"from\"    : [\"{{xchainAddress}}\"],\n        \"to\"      :\"{{xchainAddress}}\",\n        \"groupID\" : 0,\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\" \n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.sendNFT\",\n    \"params\" :{ \n        \"assetID\" :\"2KGdt2HpFKpTH5CtGZjYt5XPWs6Pv9DLoRBhiFfntbezdRvZWP\",\n        \"from\"    : [\"{{xchainAddress}}\"],\n        \"to\"      :\"{{xchainAddress}}\",\n        \"groupID\" : 0,\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\" \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1153,7 +1212,7 @@
 								"X"
 							]
 						},
-						"description": "Send a quantity of an asset to an address. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-sendnft)"
+						"description": "Send a quantity of an asset to an address. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-sendnft)"
 					},
 					"response": []
 				},
@@ -1164,7 +1223,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.updateManagedAsset\",\n    \"params\" :{ \n        \"assetID\" : {{avaxAssetId}},\n        \"frozen\": true,\n        \"manager\":{\n            \"threshold\": 1,\n            \"addresses\": [\n                \"{{xchainAddress}}\"\n            ]\n        },\n        \"from\"    : [\"{{xchainAddress}}\"],\n        \"to\"      : \"{{xchainAddress}}\",\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"memo\"    : \"{{memo}}\",\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\" \n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avm.updateManagedAsset\",\n    \"params\" :{ \n        \"assetID\" : {{ezcAssetId}},\n        \"frozen\": true,\n        \"manager\":{\n            \"threshold\": 1,\n            \"addresses\": [\n                \"{{xchainAddress}}\"\n            ]\n        },\n        \"from\"    : [\"{{xchainAddress}}\"],\n        \"to\"      : \"{{xchainAddress}}\",\n        \"changeAddr\": \"{{xchainAddress}}\",\n        \"memo\"    : \"{{memo}}\",\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\" \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1184,12 +1243,12 @@
 								"X"
 							]
 						},
-						"description": "Send a quantity of an asset to an address. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-send)"
+						"description": "Send a quantity of an asset to an address. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-send)"
 					},
 					"response": []
 				}
 			],
-			"description": "The X-Chain, Avalanche’s native platform for creating and trading assets, is an instance of the Avalanche Virtual Machine (AVM). This API allows clients to create and trade assets on the X-Chain and other instances of the AVM. [More info](https://docs.avax.network/v1.0/en/api/avm)"
+			"description": "The X-Chain, EZChain’s native platform for creating and trading assets, is an instance of the EZChain Virtual Machine (AVM). This API allows clients to create and trade assets on the X-Chain and other instances of the AVM. [More info](https://docs.ezchain.com/v1.0/en/api/avm)"
 		},
 		{
 			"name": "EVM",
@@ -1222,7 +1281,7 @@
 								"rpc"
 							]
 						},
-						"description": "Get the base fee for the next block. [More info](https://docs.avax.network/build/apis/contract-chain-c-chain-api#eth_baseFee)"
+						"description": "Get the base fee for the next block. [More info](https://docs.ezchain.com/build/apis/contract-chain-c-chain-api#eth_baseFee)"
 					},
 					"response": []
 				},
@@ -1254,7 +1313,7 @@
 								"rpc"
 							]
 						},
-						"description": "Getting the most recent block number. [More info](https://docs.avax.network/build/apis/contract-chain-c-chain-api#getting-the-most-recent-block-number)"
+						"description": "Getting the most recent block number. [More info](https://docs.ezchain.com/build/apis/contract-chain-c-chain-api#getting-the-most-recent-block-number)"
 					},
 					"response": []
 				},
@@ -1286,7 +1345,7 @@
 								"rpc"
 							]
 						},
-						"description": "Call a contract. [More info](https://docs.avax.network/build/apis/contract-chain-c-chain-api#call-a-contract)"
+						"description": "Call a contract. [More info](https://docs.ezchain.com/build/apis/contract-chain-c-chain-api#call-a-contract)"
 					},
 					"response": []
 				},
@@ -1318,7 +1377,7 @@
 								"rpc"
 							]
 						},
-						"description": "Not well documented in JSON-RPC references. See instead EIP694. [More info](https://docs.avax.network/build/apis/contract-chain-c-chain-api#getting-the-chain-id)"
+						"description": "Not well documented in JSON-RPC references. See instead EIP694. [More info](https://docs.ezchain.com/build/apis/contract-chain-c-chain-api#getting-the-chain-id)"
 					},
 					"response": []
 				},
@@ -1350,7 +1409,7 @@
 								"rpc"
 							]
 						},
-						"description": "Getting an account’s non-AVAX balance. [More info](https://docs.avax.network/v1.0/en/api/evm/#getting-an-accounts-non-avax-balance)"
+						"description": "Getting an account’s non-EZC balance. [More info](https://docs.ezchain.com/v1.0/en/api/evm/#getting-an-accounts-non-ezc-balance)"
 					},
 					"response": []
 				},
@@ -1382,7 +1441,7 @@
 								"rpc"
 							]
 						},
-						"description": "Getting an account’s balance. [More info](https://docs.avax.network/build/apis/contract-chain-c-chain-api#getting-an-accounts-balance)"
+						"description": "Getting an account’s balance. [More info](https://docs.ezchain.com/build/apis/contract-chain-c-chain-api#getting-an-accounts-balance)"
 					},
 					"response": []
 				},
@@ -1414,7 +1473,7 @@
 								"rpc"
 							]
 						},
-						"description": "Get the priority fee needed to be included in a block. [More info](https://docs.avax.network/build/apis/contract-chain-c-chain-api#eth_maxPriorityFeePerGas)"
+						"description": "Get the priority fee needed to be included in a block. [More info](https://docs.ezchain.com/build/apis/contract-chain-c-chain-api#eth_maxPriorityFeePerGas)"
 					},
 					"response": []
 				},
@@ -1446,7 +1505,7 @@
 								"rpc"
 							]
 						},
-						"description": "Signing a transaction.\n\nThis method will create a signed transaction, but will not publish it automatically to the network. Instead, the `raw` result output should be used with `eth_sendRawTransaction` to execute the transaction. [More info](https://docs.avax.network/build/apis/contract-chain-c-chain-api#signing-a-transaction)"
+						"description": "Signing a transaction.\n\nThis method will create a signed transaction, but will not publish it automatically to the network. Instead, the `raw` result output should be used with `eth_sendRawTransaction` to execute the transaction. [More info](https://docs.ezchain.com/build/apis/contract-chain-c-chain-api#signing-a-transaction)"
 					},
 					"response": []
 				},
@@ -1478,7 +1537,7 @@
 								"rpc"
 							]
 						},
-						"description": "Getting an account’s nonce. [More info](https://docs.avax.network/build/apis/contract-chain-c-chain-api#getting-an-accounts-nonce)"
+						"description": "Getting an account’s nonce. [More info](https://docs.ezchain.com/build/apis/contract-chain-c-chain-api#getting-an-accounts-nonce)"
 					},
 					"response": []
 				},
@@ -1510,7 +1569,7 @@
 								"rpc"
 							]
 						},
-						"description": "Send a raw transaction.\n\nExample below shows a raw transaction published to the network and its associated transaction hash. [More info](https://docs.avax.network/build/apis/contract-chain-c-chain-api#send-a-raw-transaction)"
+						"description": "Send a raw transaction.\n\nExample below shows a raw transaction published to the network and its associated transaction hash. [More info](https://docs.ezchain.com/build/apis/contract-chain-c-chain-api#send-a-raw-transaction)"
 					},
 					"response": []
 				},
@@ -1542,7 +1601,7 @@
 								"rpc"
 							]
 						},
-						"description": "Getting a block by hash. [More info](https://docs.avax.network/build/apis/contract-chain-c-chain-api#getting-a-block-by-hash)"
+						"description": "Getting a block by hash. [More info](https://docs.ezchain.com/build/apis/contract-chain-c-chain-api#getting-a-block-by-hash)"
 					},
 					"response": []
 				},
@@ -1574,7 +1633,7 @@
 								"rpc"
 							]
 						},
-						"description": "Getting a block by number. [More info](https://docs.avax.network/v1.0/en/api/evm/#getting-a-block-by-number)"
+						"description": "Getting a block by number. [More info](https://docs.ezchain.com/v1.0/en/api/evm/#getting-a-block-by-number)"
 					},
 					"response": []
 				},
@@ -1606,7 +1665,7 @@
 								"rpc"
 							]
 						},
-						"description": "Getting a transaction by hash. [More info](https://docs.avax.network/v1.0/en/api/evm/#getting-a-transaction-by-hash)"
+						"description": "Getting a transaction by hash. [More info](https://docs.ezchain.com/v1.0/en/api/evm/#getting-a-transaction-by-hash)"
 					},
 					"response": []
 				},
@@ -1638,7 +1697,7 @@
 								"rpc"
 							]
 						},
-						"description": "Getting a transaction receipt. [More info](https://docs.avax.network/v1.0/en/api/evm/#getting-a-transaction-receipt)"
+						"description": "Getting a transaction receipt. [More info](https://docs.ezchain.com/v1.0/en/api/evm/#getting-a-transaction-receipt)"
 					},
 					"response": []
 				},
@@ -1649,7 +1708,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\" :\"avax.export\",\n    \"params\" :{\n        \"from\": [\"{{cchainAddress}}\"],\n        \"to\":\"{{xchainAddress}}\",\n        \"amount\": 25,\n        \"changeAddr\": \"{{cchainAddress}}\",\n        \"assetID\": \"FSznYPiqrJ3WtGurw54re47oDpGXQ8THc8yZ4fEDX4G8cGqbn\",\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\"\n    },\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1\n}",
+							"raw": "{\n    \"method\" :\"ezc.export\",\n    \"params\" :{\n        \"from\": [\"{{cchainAddress}}\"],\n        \"to\":\"{{xchainAddress}}\",\n        \"amount\": 25,\n        \"changeAddr\": \"{{cchainAddress}}\",\n        \"assetID\": \"FSznYPiqrJ3WtGurw54re47oDpGXQ8THc8yZ4fEDX4G8cGqbn\",\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\"\n    },\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1657,7 +1716,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/avax",
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/ezc",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -1667,21 +1726,21 @@
 								"ext",
 								"bc",
 								"C",
-								"avax"
+								"ezc"
 							]
 						},
-						"description": "Send AVAX from the X-Chain to an account on the P-Chain.\nAfter calling this method, you must call the P-Chain’s `importAVAX` method to complete the transfer. [More info](https://docs.avax.network/v1.0/en/api/avm/#avmexportavax)"
+						"description": "Send EZC from the X-Chain to an account on the P-Chain.\nAfter calling this method, you must call the P-Chain’s `importEZC` method to complete the transfer. [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmexportezc)"
 					},
 					"response": []
 				},
 				{
-					"name": "exportAVAX",
+					"name": "exportEZC",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\" :\"avax.exportAVAX\",\n    \"params\" :{\n        \"from\": [\"{{cchainAddress}}\"],\n        \"to\":\"{{xchainAddress}}\",\n        \"amount\": 999000000,\n        \"destinationChain\": \"X\",\n        \"changeAddr\": \"{{cchainAddress}}\",\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\" \n    },\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1\n}",
+							"raw": "{\n    \"method\" :\"ezc.exportEZC\",\n    \"params\" :{\n        \"from\": [\"{{cchainAddress}}\"],\n        \"to\":\"{{xchainAddress}}\",\n        \"amount\": 999000000,\n        \"destinationChain\": \"X\",\n        \"changeAddr\": \"{{cchainAddress}}\",\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\" \n    },\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1689,7 +1748,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/avax",
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/ezc",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -1699,10 +1758,10 @@
 								"ext",
 								"bc",
 								"C",
-								"avax"
+								"ezc"
 							]
 						},
-						"description": "Send AVAX from the X-Chain to an account on the P-Chain.\nAfter calling this method, you must call the P-Chain’s `importAVAX` method to complete the transfer. [More info](https://docs.avax.network/v1.0/en/api/avm/#avmexportavax)"
+						"description": "Send EZC from the X-Chain to an account on the P-Chain.\nAfter calling this method, you must call the P-Chain’s `importEZC` method to complete the transfer. [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmexportEZC)"
 					},
 					"response": []
 				},
@@ -1713,7 +1772,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\" :\"avax.exportKey\",\n    \"params\" :{\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\",\n        \"address\": \"{{cchainAddress}}\"\n    },\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1\n}",
+							"raw": "{\n    \"method\" :\"ezc.exportKey\",\n    \"params\" :{\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\",\n        \"address\": \"{{cchainAddress}}\"\n    },\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1721,7 +1780,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/avax",
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/ezc",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -1731,10 +1790,10 @@
 								"ext",
 								"bc",
 								"C",
-								"avax"
+								"ezc"
 							]
 						},
-						"description": "Get the private key that controls a given address.\nThe returned private key can be added to a user with `avm.importKey`. [More info](https://docs.avax.network/v1.0/en/api/avm/#avmexportkey)\n\n"
+						"description": "Get the private key that controls a given address.\nThe returned private key can be added to a user with `avm.importKey`. [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmexportkey)\n\n"
 					},
 					"response": []
 				},
@@ -1745,7 +1804,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avax.getAtomicTx\",\n    \"params\" :{\n        \"txID\":\"2GD5SRYJQr2kw5jE73trBFiAgVQyrCaeg223TaTyJFYXf2kPty\",\n        \"encoding\": \"hex\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"ezc.getAtomicTx\",\n    \"params\" :{\n        \"txID\":\"2GD5SRYJQr2kw5jE73trBFiAgVQyrCaeg223TaTyJFYXf2kPty\",\n        \"encoding\": \"hex\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1753,7 +1812,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/avax",
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/ezc",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -1763,10 +1822,10 @@
 								"ext",
 								"bc",
 								"C",
-								"avax"
+								"ezc"
 							]
 						},
-						"description": "Returns the specified transaction [More info](https://docs.avax.network/v1.0/en/api/avm/#avmgetbalance)"
+						"description": "Returns the specified transaction [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmgetbalance)"
 					},
 					"response": []
 				},
@@ -1777,7 +1836,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"avax.getAtomicTxStatus\",\n    \"params\": {\n        \"txID\": \"n1D9UkjiryEBtW8qznD1TDkGEuYRFj5tLaS8NhVpMLYsx1FHa\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"ezc.getAtomicTxStatus\",\n    \"params\": {\n        \"txID\": \"n1D9UkjiryEBtW8qznD1TDkGEuYRFj5tLaS8NhVpMLYsx1FHa\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1785,7 +1844,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/avax",
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/ezc",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -1795,10 +1854,10 @@
 								"ext",
 								"bc",
 								"C",
-								"avax"
+								"ezc"
 							]
 						},
-						"description": "Get the status of a transaction sent to the network. [More info](https://docs.avax.network/v1.0/en/api/avm/#avmgettxstatus)"
+						"description": "Get the status of a transaction sent to the network. [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmgettxstatus)"
 					},
 					"response": []
 				},
@@ -1809,7 +1868,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"avax.getUTXOs\",\n    \"params\" :{\n        \"addresses\":[\"{{cchainbech32address}}\"],\n        \"sourceChain\": \"X\",\n        \"limit\": 5,\n        \"encoding\": \"hex\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"ezc.getUTXOs\",\n    \"params\" :{\n        \"addresses\":[\"{{cchainbech32address}}\"],\n        \"sourceChain\": \"X\",\n        \"limit\": 5,\n        \"encoding\": \"hex\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1817,7 +1876,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/avax",
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/ezc",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -1827,10 +1886,10 @@
 								"ext",
 								"bc",
 								"C",
-								"avax"
+								"ezc"
 							]
 						},
-						"description": "Get the UTXOs that reference a given address. [More info](https://docs.avax.network/v1.0/en/api/avm/#avmgetutxos)"
+						"description": "Get the UTXOs that reference a given address. [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmgetutxos)"
 					},
 					"response": []
 				},
@@ -1841,7 +1900,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"avax.import\",\n    \"params\": {\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\",\n        \"sourceChain\": \"X\",\n        \"to\":\"{{cchainAddress}}\"\n    },\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1\n}",
+							"raw": "{\n    \"method\": \"ezc.import\",\n    \"params\": {\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\",\n        \"sourceChain\": \"X\",\n        \"to\":\"{{cchainAddress}}\"\n    },\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1849,7 +1908,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/avax",
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/ezc",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -1859,21 +1918,21 @@
 								"ext",
 								"bc",
 								"C",
-								"avax"
+								"ezc"
 							]
 						},
-						"description": "Send AVAX from the X-Chain to an account on the P-Chain.\nAfter calling this method, you must call the P-Chain’s `importAVAX` method to complete the transfer. [More info](https://docs.avax.network/v1.0/en/api/avm/#avmexportavax)"
+						"description": "Send EZC from the X-Chain to an account on the P-Chain.\nAfter calling this method, you must call the P-Chain’s `importEZC` method to complete the transfer. [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmexportEZC)"
 					},
 					"response": []
 				},
 				{
-					"name": "importAVAX",
+					"name": "importEZC",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"avax.importAVAX\",\n    \"params\": {\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\",\n        \"sourceChain\": \"X\",\n        \"to\":\"{{cchainAddress}}\"\n    },\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1\n}",
+							"raw": "{\n    \"method\": \"ezc.importEZC\",\n    \"params\": {\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\",\n        \"sourceChain\": \"X\",\n        \"to\":\"{{cchainAddress}}\"\n    },\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1881,7 +1940,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/avax",
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/ezc",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -1891,10 +1950,10 @@
 								"ext",
 								"bc",
 								"C",
-								"avax"
+								"ezc"
 							]
 						},
-						"description": "Import AVAX from the X-Chain to an account on the C-Chain.\nBefore calling this method, you must call the X-Chain’s `exportAVAX` method to initiate the transfer. [More info](https://docs.avax.network/v1.0/en/api/evm/#evmimportavax)"
+						"description": "Import EZC from the X-Chain to an account on the C-Chain.\nBefore calling this method, you must call the X-Chain’s `exportEZC` method to initiate the transfer. [More info](https://docs.ezchain.com/v1.0/en/api/evm/#evmimportezc)"
 					},
 					"response": []
 				},
@@ -1905,7 +1964,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"method\": \"avax.importKey\",\n    \"params\": {\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\",\n        \"privateKey\":\"{{privkey}}\"\n    },\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1\n}",
+							"raw": "{\n    \"method\": \"ezc.importKey\",\n    \"params\": {\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\",\n        \"privateKey\":\"{{privkey}}\"\n    },\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1913,7 +1972,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/avax",
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/ezc",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -1923,10 +1982,10 @@
 								"ext",
 								"bc",
 								"C",
-								"avax"
+								"ezc"
 							]
 						},
-						"description": "Give a user control over an address by providing the private key that controls the address. [More info](https://docs.avax.network/v1.0/en/api/avm/#avmimportkey)"
+						"description": "Give a user control over an address by providing the private key that controls the address. [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmimportkey)"
 					},
 					"response": []
 				},
@@ -1937,7 +1996,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"avax.issueTx\",\n    \"params\" :{\n        \"tx\":\"0x00\",\n        \"encoding\": \"hex\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     : 1,\n    \"method\" :\"ezc.issueTx\",\n    \"params\" :{\n        \"tx\":\"0x00\",\n        \"encoding\": \"hex\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1945,7 +2004,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/avax",
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/ezc",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -1955,10 +2014,10 @@
 								"ext",
 								"bc",
 								"C",
-								"avax"
+								"ezc"
 							]
 						},
-						"description": "Send a signed transaction to the network. [More info](https://docs.avax.network/build/apis/exchange-chain-x-chain-api#avm-issuetx)"
+						"description": "Send a signed transaction to the network. [More info](https://docs.ezchain.com/build/apis/exchange-chain-x-chain-api#avm-issuetx)"
 					},
 					"response": []
 				},
@@ -1990,7 +2049,7 @@
 								"rpc"
 							]
 						},
-						"description": "Getting the network ID. [More info](https://docs.avax.network/v1.0/en/api/evm/#getting-the-network-id)"
+						"description": "Getting the network ID. [More info](https://docs.ezchain.com/v1.0/en/api/evm/#getting-the-network-id)"
 					},
 					"response": []
 				},
@@ -2086,7 +2145,7 @@
 								"rpc"
 							]
 						},
-						"description": "Listing accounts loaded in EVM node. [More info](https://docs.avax.network/v1.0/en/api/evm/#listing-accounts-loaded-in-evm-node)"
+						"description": "Listing accounts loaded in EVM node. [More info](https://docs.ezchain.com/v1.0/en/api/evm/#listing-accounts-loaded-in-evm-node)"
 					},
 					"response": []
 				},
@@ -2118,7 +2177,7 @@
 								"rpc"
 							]
 						},
-						"description": "Unlocking an account.\n\nPersonal accounts loaded directly in the EVM can only sign transactions while in an unlocked state. The example below unlocks the listed account address for 60 seconds. Note the associated passphrase `cheese` must be provided for authorization. [More info](https://docs.avax.network/v1.0/en/api/evm/#unlocking-an-account)"
+						"description": "Unlocking an account.\n\nPersonal accounts loaded directly in the EVM can only sign transactions while in an unlocked state. The example below unlocks the listed account address for 60 seconds. Note the associated passphrase `cheese` must be provided for authorization. [More info](https://docs.ezchain.com/v1.0/en/api/evm/#unlocking-an-account)"
 					},
 					"response": []
 				},
@@ -2150,7 +2209,7 @@
 								"rpc"
 							]
 						},
-						"description": "Getting count of pending transactions.\n\n“Pending” transactions will be non-zero during periods of heavy network use. “Queued” transactions indicate transactions have been submitted with nonce values ahead of the next expected value for an address, which places them on hold until a transaction with the next expected nonce value is submitted. [More info](https://docs.avax.network/v1.0/en/api/evm/#getting-count-of-pending-transactions)"
+						"description": "Getting count of pending transactions.\n\n“Pending” transactions will be non-zero during periods of heavy network use. “Queued” transactions indicate transactions have been submitted with nonce values ahead of the next expected value for an address, which places them on hold until a transaction with the next expected nonce value is submitted. [More info](https://docs.ezchain.com/v1.0/en/api/evm/#getting-count-of-pending-transactions)"
 					},
 					"response": []
 				},
@@ -2182,7 +2241,7 @@
 								"rpc"
 							]
 						},
-						"description": "Getting the current client version. [More info](https://docs.avax.network/v1.0/en/api/evm/#getting-the-current-client-version)"
+						"description": "Getting the current client version. [More info](https://docs.ezchain.com/v1.0/en/api/evm/#getting-the-current-client-version)"
 					},
 					"response": []
 				},
@@ -2214,74 +2273,12 @@
 								"rpc"
 							]
 						},
-						"description": "Calculate a cryptographic hash.\n\nThe input parameter contains hexidecimal bytes of arbitrary length. The example here uses the UTF-8 text string “snowstorm” converted to hexidecimal bytes. [More info](https://docs.avax.network/v1.0/en/api/evm/#calculate-a-cryptographic-hash)"
-					},
-					"response": []
-				},
-				{
-					"name": "eth_gasPrice",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 3,\n    \"method\": \"eth_gasPrice\",\n    \"params\": []\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/rpc",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"ext",
-								"bc",
-								"C",
-								"rpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "eth_estimateGas",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 4,\n    \"method\": \"eth_estimateGas\",\n    \"params\": [\n        {\n            \"from\": \"{{cchainAddress}}\",\n            \"to\": \"{{cchainAddress}}\",\n            \"gasPrice\": \"0x746a52880\",\n            \"value\": \"0x3635c9adc5dea00000\"\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/C/rpc",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"ext",
-								"bc",
-								"C",
-								"rpc"
-							]
-						}
+						"description": "Calculate a cryptographic hash.\n\nThe input parameter contains hexidecimal bytes of arbitrary length. The example here uses the UTF-8 text string “snowstorm” converted to hexidecimal bytes. [More info](https://docs.ezchain.com/v1.0/en/api/evm/#calculate-a-cryptographic-hash)"
 					},
 					"response": []
 				}
 			],
-			"description": "This document describes the API of the C-Chain, which is an instance of the Ethereum Virtual Machine (EVM.)\n\nNote: Ethereum has its own notion of `networkID` and `chainID`. The C-Chain uses `1` and `43110` for these values, obtained using the `net_version` and `eth_chainId` methods shown below. These have no relationship to AVA’s view of networkID and chainID, and are purely internal to the C-Chain. [More info](https://docs.avax.network/v1.0/en/api/evm)"
+			"description": "This document describes the API of the C-Chain, which is an instance of the Ethereum Virtual Machine (EVM.)\n\nNote: Ethereum has its own notion of `networkID` and `chainID`. The C-Chain uses `1` and `43110` for these values, obtained using the `net_version` and `eth_chainId` methods shown below. These have no relationship to EZC’s view of networkID and chainID, and are purely internal to the C-Chain. [More info](https://docs.ezchain.com/v1.0/en/api/evm)"
 		},
 		{
 			"name": "Health",
@@ -2312,12 +2309,12 @@
 								"health"
 							]
 						},
-						"description": "Get health check on this node. [More info](https://docs.avax.network/build/apis/health-api#health-getliveness)"
+						"description": "Get health check on this node. [More info](https://docs.ezchain.com/build/apis/health-api#health-getliveness)"
 					},
 					"response": []
 				}
 			],
-			"description": "This API can be used for measuring node health. [More info](https://docs.avax.network/v1.0/en/api/health)"
+			"description": "This API can be used for measuring node health. [More info](https://docs.ezchain.com/v1.0/en/api/health)"
 		},
 		{
 			"name": "Index",
@@ -2353,7 +2350,7 @@
 										"tx"
 									]
 								},
-								"description": "Get the most recently accepted container. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getlastaccepted)"
+								"description": "Get the most recently accepted container. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getlastaccepted)"
 							},
 							"response": []
 						},
@@ -2385,7 +2382,7 @@
 										"tx"
 									]
 								},
-								"description": "Get container by index. The first container accepted is at index 0, the second is at index 1, etc. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerbyindex)"
+								"description": "Get container by index. The first container accepted is at index 0, the second is at index 1, etc. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerbyindex)"
 							},
 							"response": []
 						},
@@ -2417,7 +2414,7 @@
 										"tx"
 									]
 								},
-								"description": "Get container by ID. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerbyid)"
+								"description": "Get container by ID. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerbyid)"
 							},
 							"response": []
 						},
@@ -2449,7 +2446,7 @@
 										"tx"
 									]
 								},
-								"description": "Returns containers with indices in [startIndex, startIndex+1, ... , startIndex + numToFetch - 1]. numToFetch must be in \\[0,1024\\] [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerrange)"
+								"description": "Returns containers with indices in [startIndex, startIndex+1, ... , startIndex + numToFetch - 1]. numToFetch must be in \\[0,1024\\] [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerrange)"
 							},
 							"response": []
 						},
@@ -2481,7 +2478,7 @@
 										"tx"
 									]
 								},
-								"description": "Get a container's index. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getindex)"
+								"description": "Get a container's index. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getindex)"
 							},
 							"response": []
 						},
@@ -2513,7 +2510,7 @@
 										"tx"
 									]
 								},
-								"description": "Returns true if the container is in this index. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.isaccepted)"
+								"description": "Returns true if the container is in this index. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.isaccepted)"
 							},
 							"response": []
 						}
@@ -2550,7 +2547,7 @@
 										"vtx"
 									]
 								},
-								"description": "Get the most recently accepted container. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getlastaccepted)"
+								"description": "Get the most recently accepted container. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getlastaccepted)"
 							},
 							"response": []
 						},
@@ -2582,7 +2579,7 @@
 										"vtx"
 									]
 								},
-								"description": "Get container by index. The first container accepted is at index 0, the second is at index 1, etc. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerbyindex)"
+								"description": "Get container by index. The first container accepted is at index 0, the second is at index 1, etc. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerbyindex)"
 							},
 							"response": []
 						},
@@ -2614,7 +2611,7 @@
 										"vtx"
 									]
 								},
-								"description": "Get container by ID. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerbyid)"
+								"description": "Get container by ID. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerbyid)"
 							},
 							"response": []
 						},
@@ -2646,7 +2643,7 @@
 										"vtx"
 									]
 								},
-								"description": "Returns containers with indices in [startIndex, startIndex+1, ... , startIndex + numToFetch - 1]. numToFetch must be in \\[0,1024\\] [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerrange)"
+								"description": "Returns containers with indices in [startIndex, startIndex+1, ... , startIndex + numToFetch - 1]. numToFetch must be in \\[0,1024\\] [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerrange)"
 							},
 							"response": []
 						},
@@ -2678,7 +2675,7 @@
 										"vtx"
 									]
 								},
-								"description": "Get a container's index. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getindex)"
+								"description": "Get a container's index. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getindex)"
 							},
 							"response": []
 						},
@@ -2710,7 +2707,7 @@
 										"vtx"
 									]
 								},
-								"description": "Returns true if the container is in this index. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.isaccepted)"
+								"description": "Returns true if the container is in this index. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.isaccepted)"
 							},
 							"response": []
 						}
@@ -2747,7 +2744,7 @@
 										"block"
 									]
 								},
-								"description": "Get the most recently accepted container. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getlastaccepted)"
+								"description": "Get the most recently accepted container. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getlastaccepted)"
 							},
 							"response": []
 						},
@@ -2779,7 +2776,7 @@
 										"block"
 									]
 								},
-								"description": "Get container by index. The first container accepted is at index 0, the second is at index 1, etc. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerbyindex)"
+								"description": "Get container by index. The first container accepted is at index 0, the second is at index 1, etc. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerbyindex)"
 							},
 							"response": []
 						},
@@ -2811,7 +2808,7 @@
 										"block"
 									]
 								},
-								"description": "Get container by ID. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerbyid)"
+								"description": "Get container by ID. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerbyid)"
 							},
 							"response": []
 						},
@@ -2843,7 +2840,7 @@
 										"block"
 									]
 								},
-								"description": "Returns containers with indices in [startIndex, startIndex+1, ... , startIndex + numToFetch - 1]. numToFetch must be in \\[0,1024\\] [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerrange)"
+								"description": "Returns containers with indices in [startIndex, startIndex+1, ... , startIndex + numToFetch - 1]. numToFetch must be in \\[0,1024\\] [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerrange)"
 							},
 							"response": []
 						},
@@ -2875,7 +2872,7 @@
 										"block"
 									]
 								},
-								"description": "Get a container's index. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getindex)"
+								"description": "Get a container's index. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getindex)"
 							},
 							"response": []
 						},
@@ -2907,7 +2904,7 @@
 										"block"
 									]
 								},
-								"description": "Returns true if the container is in this index. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.isaccepted)"
+								"description": "Returns true if the container is in this index. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.isaccepted)"
 							},
 							"response": []
 						}
@@ -2944,7 +2941,7 @@
 										"block"
 									]
 								},
-								"description": "Get the most recently accepted container. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getlastaccepted)"
+								"description": "Get the most recently accepted container. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getlastaccepted)"
 							},
 							"response": []
 						},
@@ -2976,7 +2973,7 @@
 										"block"
 									]
 								},
-								"description": "Get container by index. The first container accepted is at index 0, the second is at index 1, etc. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerbyindex)"
+								"description": "Get container by index. The first container accepted is at index 0, the second is at index 1, etc. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerbyindex)"
 							},
 							"response": []
 						},
@@ -3008,7 +3005,7 @@
 										"block"
 									]
 								},
-								"description": "Get container by ID. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerbyid)"
+								"description": "Get container by ID. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerbyid)"
 							},
 							"response": []
 						},
@@ -3040,7 +3037,7 @@
 										"block"
 									]
 								},
-								"description": "Returns containers with indices in [startIndex, startIndex+1, ... , startIndex + numToFetch - 1]. numToFetch must be in \\[0,1024\\] [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getcontainerrange)"
+								"description": "Returns containers with indices in [startIndex, startIndex+1, ... , startIndex + numToFetch - 1]. numToFetch must be in \\[0,1024\\] [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getcontainerrange)"
 							},
 							"response": []
 						},
@@ -3072,7 +3069,7 @@
 										"block"
 									]
 								},
-								"description": "Get a container's index. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.getindex)"
+								"description": "Get a container's index. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.getindex)"
 							},
 							"response": []
 						},
@@ -3104,14 +3101,14 @@
 										"block"
 									]
 								},
-								"description": "Returns true if the container is in this index. [More info](https://docs.avax.network/build/avalanchego-apis/index-api#index.isaccepted)"
+								"description": "Returns true if the container is in this index. [More info](https://docs.ezchain.com/build/ezcgo-apis/index-api#index.isaccepted)"
 							},
 							"response": []
 						}
 					]
 				}
 			],
-			"description": "This API can be used to query data from AvalancheGo's database. The Index API is only available when node is run with --index-enabled option."
+			"description": "This API can be used to query data from ezcgo's database. The Index API is only available when node is run with --index-enabled option."
 		},
 		{
 			"name": "Info",
@@ -3142,7 +3139,7 @@
 								"info"
 							]
 						},
-						"description": "Given a blockchain’s alias, get its ID. [More info](https://docs.avax.network/build/apis/info-api#info-getblockchainid)"
+						"description": "Given a blockchain’s alias, get its ID. [More info](https://docs.ezchain.com/build/ezcgo-apis/info#infogetblockchainid)"
 					},
 					"response": []
 				},
@@ -3172,7 +3169,7 @@
 								"info"
 							]
 						},
-						"description": "Get the ID of the network this node is participating in. [More info](https://docs.avax.network/build/apis/info-api#info-getnetworkid)"
+						"description": "Get the ID of the network this node is participating in. [More info](https://docs.ezchain.com/build/apis/info-api#info-getnetworkid)"
 					},
 					"response": []
 				},
@@ -3202,7 +3199,7 @@
 								"info"
 							]
 						},
-						"description": "Get the name of the network this node is participating in. [More info](https://docs.avax.network/build/apis/info-api#info-getnetworkname)"
+						"description": "Get the name of the network this node is participating in. [More info](https://docs.ezchain.com/build/apis/info-api#info-getnetworkname)"
 					},
 					"response": []
 				},
@@ -3232,7 +3229,7 @@
 								"info"
 							]
 						},
-						"description": "Get the name of the network this node is participating in. [More info](https://docs.avax.network/build/apis/info-api#info-getnodeid)"
+						"description": "Get the name of the network this node is participating in. [More info](https://docs.ezchain.com/build/apis/info-api#info-getnodeid)"
 					},
 					"response": []
 				},
@@ -3262,7 +3259,7 @@
 								"info"
 							]
 						},
-						"description": "Get the IP of this node. [More info](https://docs.avax.network/build/apis/info-api#info-getnodeip)"
+						"description": "Get the IP of this node. [More info](https://docs.ezchain.com/build/apis/info-api#info-getnodeip)"
 					},
 					"response": []
 				},
@@ -3292,7 +3289,7 @@
 								"info"
 							]
 						},
-						"description": "Get the version of this node. [More info](https://docs.avax.network/build/apis/info-api#info-getnodeversion)"
+						"description": "Get the version of this node. [More info](https://docs.ezchain.com/build/apis/info-api#info-getnodeversion)"
 					},
 					"response": []
 				},
@@ -3322,7 +3319,7 @@
 								"info"
 							]
 						},
-						"description": "Check whether a given chain is done bootstrapping. [More info](https://docs.avax.network/build/apis/info-api#info-isbootstrapped)"
+						"description": "Check whether a given chain is done bootstrapping. [More info](https://docs.ezchain.com/build/ezcgo-apis/info-api#infoisbootstrapped)"
 					},
 					"response": []
 				},
@@ -3352,7 +3349,37 @@
 								"info"
 							]
 						},
-						"description": "Get the transaction fee of the network. [More info](https://docs.avax.network/v1.0/en/api/info/#infogettxfee)"
+						"description": "Get the transaction fee of the network. [More info](https://docs.ezchain.com/v1.0/en/api/info/#infogettxfee)"
+					},
+					"response": []
+				},
+				{
+					"name": "getVMs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"info.getVMs\",\n    \"params\": {\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/info",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ext",
+								"info"
+							]
+						},
+						"description": "Get the virtual machines installed on this node. [More info](https://docs.ezchain.com/build/ezcgo-apis/info#infogetvms)"
 					},
 					"response": []
 				},
@@ -3382,7 +3409,7 @@
 								"info"
 							]
 						},
-						"description": "Returns the network's observed uptime of this node. [More info](https://docs.avax.network/build/avalanchego-apis/info-api#info-uptime)"
+						"description": "Returns the network's observed uptime of this node. [More info](https://docs.ezchain.com/build/ezcgo-apis/info-api#info-uptime)"
 					},
 					"response": []
 				},
@@ -3412,7 +3439,7 @@
 								"info"
 							]
 						},
-						"description": "Get description of peer connections. [More info](https://docs.avax.network/build/apis/info-api#info-peers)"
+						"description": "Get description of peer connections. [More info](https://docs.ezchain.com/build/apis/info-api#info-peers)"
 					},
 					"response": []
 				}
@@ -3429,7 +3456,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"ipcs.publishBlockchain\",\n    \"params\":{\n        \"blockchainID\":\"{{avalanceBlockchainId}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"ipcs.publishBlockchain\",\n    \"params\":{\n        \"blockchainID\":\"{{ezchainBlockchainId}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3448,7 +3475,7 @@
 								"ipcs"
 							]
 						},
-						"description": "Register a blockchain so it publishes accepted vertices to a Unix domain socket. [More info](https://docs.avax.network/build/apis/ipc-api#ipcs-publishblockchain)"
+						"description": "Register a blockchain so it publishes accepted vertices to a Unix domain socket. [More info](https://docs.ezchain.com/build/apis/ipc-api#ipcs-publishblockchain)"
 					},
 					"response": []
 				},
@@ -3459,7 +3486,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"ipcs.unpublishBlockchain\",\n    \"params\":{\n        \"blockchainID\":\"{{avalanceBlockchainId}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"ipcs.unpublishBlockchain\",\n    \"params\":{\n        \"blockchainID\":\"{{ezchainBlockchainId}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3478,12 +3505,12 @@
 								"ipcs"
 							]
 						},
-						"description": "Deregister a blockchain so that it no longer publishes to a Unix domain socket. [More info](https://docs.avax.network/build/apis/ipc-api#ipcs-unpublishblockchain)"
+						"description": "Deregister a blockchain so that it no longer publishes to a Unix domain socket. [More info](https://docs.ezchain.com/build/apis/ipc-api#ipcs-unpublishblockchain)"
 					},
 					"response": []
 				}
 			],
-			"description": "The IPC API allows users to create a UNIX domain socket for a blockchain to publish to. When the blockchain accepts a vertex/block it will publish the vertex to the socket.\n\nA node will only expose this API if it is started with command-line argument `api-ipcs-enabled=true`. [More info](https://docs.avax.network/v1.0/en/api/ipc/)"
+			"description": "The IPC API allows users to create a UNIX domain socket for a blockchain to publish to. When the blockchain accepts a vertex/block it will publish the vertex to the socket.\n\nA node will only expose this API if it is started with command-line argument `api-ipcs-enabled=true`. [More info](https://docs.ezchain.com/v1.0/en/api/ipc/)"
 		},
 		{
 			"name": "Keystore",
@@ -3495,7 +3522,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"keystore.createUser\",\n    \"params\" :{\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"keystore.createUser\",\n    \"params\" :{\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3514,7 +3541,7 @@
 								"keystore"
 							]
 						},
-						"description": "Create a new user with the specified username and password. [More info](https://docs.avax.network/build/apis/keystore-api#keystore-createuser)"
+						"description": "Create a new user with the specified username and password. [More info](https://docs.ezchain.com/build/apis/keystore-api#keystore-createuser)"
 					},
 					"response": []
 				},
@@ -3525,7 +3552,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"keystore.deleteUser\",\n    \"params\" : {\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"keystore.deleteUser\",\n    \"params\" : {\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3544,7 +3571,7 @@
 								"keystore"
 							]
 						},
-						"description": "Delete a user. [More info](https://docs.avax.network/build/apis/keystore-api#keystore-deleteuser)"
+						"description": "Delete a user. [More info](https://docs.ezchain.com/build/apis/keystore-api#keystore-deleteuser)"
 					},
 					"response": []
 				},
@@ -3555,7 +3582,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"keystore.exportUser\",\n    \"params\": {\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\",\n        \"encoding\": \"hex\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"keystore.exportUser\",\n    \"params\": {\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\",\n        \"encoding\": \"hex\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3574,7 +3601,7 @@
 								"keystore"
 							]
 						},
-						"description": "Export a user. The user can be imported to another node with `keystore.importUser`. The user’s password remains encrypted. [More info](https://docs.avax.network/build/apis/keystore-api#keystore-exportuser)"
+						"description": "Export a user. The user can be imported to another node with `keystore.importUser`. The user’s password remains encrypted. [More info](https://docs.ezchain.com/build/apis/keystore-api#keystore-exportuser)"
 					},
 					"response": []
 				},
@@ -3585,7 +3612,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"keystore.importUser\",\n    \"params\" :{\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\",\n        \"user\"    :\"0x0000b79e54bb3452985874844fd02ce47671725850111b14d5b06d4b3e142ec852b39d1be2bdead684977bc0a1bfa6eeb06e000000040000004066687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f292500000000000000000000000000000000000000000000000000000000000000000000004c00000000002a92a15386259d71410fe602a9a1e2207a7afae3efd8d86f142577405476e5337a0736ba095b0fe911cb3100000018226dc5aec589008bc87ce142d5488d942f7e9d37374be99f0000003466687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f29253cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c00000052000000000030b46ad90c1ef2f22282a9ab9c045cf190506148a7afcf4e94360e7e4109ef9abbc4aa97dd84533a5b081c0da489e205f00000001825e30947b222849b4f69b0a1eaf1dd49c82f5b64995d3c4e00000040faa57ee922f01eb75ca224d2e8aaf9cb60973d011e0ac08c7b3798c3aacf79de00000000000000000000000000000000000000000000000000000000000000000000004c00000000002a098545758bbf938acd508762ffff24bd2e8e0f80313fb0957c51fea30df6f304a94568c30dfb06257deb00000018e722d87e7d5964aa8a8772b0985d0723d398681ef29fad7900000034faa57ee922f01eb75ca224d2e8aaf9cb60973d011e0ac08c7b3798c3aacf79de3cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c00000052000000000030722156f457680f16cf010d7cb3b350aaf210ae9ed58aaf89017f0046c5380ddf76fb944a6ff9a287a6a6e6c6303c751a000000183edfb66b8b01e6197507cde7e4909f816d3accf753155f96b346b48c\",\n        \"encoding\": \"hex\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"keystore.importUser\",\n    \"params\" :{\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\",\n        \"user\"    :\"0x0000b79e54bb3452985874844fd02ce47671725850111b14d5b06d4b3e142ec852b39d1be2bdead684977bc0a1bfa6eeb06e000000040000004066687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f292500000000000000000000000000000000000000000000000000000000000000000000004c00000000002a92a15386259d71410fe602a9a1e2207a7afae3efd8d86f142577405476e5337a0736ba095b0fe911cb3100000018226dc5aec589008bc87ce142d5488d942f7e9d37374be99f0000003466687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f29253cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c00000052000000000030b46ad90c1ef2f22282a9ab9c045cf190506148a7afcf4e94360e7e4109ef9abbc4aa97dd84533a5b081c0da489e205f00000001825e30947b222849b4f69b0a1eaf1dd49c82f5b64995d3c4e00000040faa57ee922f01eb75ca224d2e8aaf9cb60973d011e0ac08c7b3798c3aacf79de00000000000000000000000000000000000000000000000000000000000000000000004c00000000002a098545758bbf938acd508762ffff24bd2e8e0f80313fb0957c51fea30df6f304a94568c30dfb06257deb00000018e722d87e7d5964aa8a8772b0985d0723d398681ef29fad7900000034faa57ee922f01eb75ca224d2e8aaf9cb60973d011e0ac08c7b3798c3aacf79de3cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c00000052000000000030722156f457680f16cf010d7cb3b350aaf210ae9ed58aaf89017f0046c5380ddf76fb944a6ff9a287a6a6e6c6303c751a000000183edfb66b8b01e6197507cde7e4909f816d3accf753155f96b346b48c\",\n        \"encoding\": \"hex\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3604,7 +3631,7 @@
 								"keystore"
 							]
 						},
-						"description": "Import a user. `password` must match the user’s password. `username` doesn’t have to match the username `user` had when it was exported. [More info](https://docs.avax.network/build/apis/keystore-api#keystore-importuser)"
+						"description": "Import a user. `password` must match the user’s password. `username` doesn’t have to match the username `user` had when it was exported. [More info](https://docs.ezchain.com/build/apis/keystore-api#keystore-importuser)"
 					},
 					"response": []
 				},
@@ -3634,12 +3661,12 @@
 								"keystore"
 							]
 						},
-						"description": "List the users in this keystore. [More info](https://docs.avax.network/build/apis/keystore-api#keystore-listusers)"
+						"description": "List the users in this keystore. [More info](https://docs.ezchain.com/build/apis/keystore-api#keystore-listusers)"
 					},
 					"response": []
 				}
 			],
-			"description": "Every node has a built-in keystore. Clients create users on the keystore, which act as identities to be used when interacting with blockchains. A keystore exists at the node level, so if you create a user on a node it exists only on that node. However, users may be imported and exported using this API. \n\n**You should only create a keystore user on a node that you operate, as the node operator has access to your plaintext password.**\n\n[More info](https://docs.avax.network/v1.0/en/api/keystore)"
+			"description": "Every node has a built-in keystore. Clients create users on the keystore, which act as identities to be used when interacting with blockchains. A keystore exists at the node level, so if you create a user on a node it exists only on that node. However, users may be imported and exported using this API. \n\n**You should only create a keystore user on a node that you operate, as the node operator has access to your plaintext password.**\n\n[More info](https://docs.ezchain.com/v1.0/en/api/keystore)"
 		},
 		{
 			"name": "Metrics",
@@ -3665,12 +3692,12 @@
 								"metrics"
 							]
 						},
-						"description": "To get the node metrics. [More info](https://docs.avax.network/build/apis/metrics-api)"
+						"description": "To get the node metrics. [More info](https://docs.ezchain.com/build/apis/metrics-api)"
 					},
 					"response": []
 				}
 			],
-			"description": "The API allows clients to get statistics about a node’s health and performance. [More info](https://docs.avax.network/v1.0/en/api/metrics/)"
+			"description": "The API allows clients to get statistics about a node’s health and performance. [More info](https://docs.ezchain.com/v1.0/en/api/metrics/)"
 		},
 		{
 			"name": "PlatformVM",
@@ -3682,7 +3709,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.addDelegator\",\n    \"params\": {\n        \"nodeId\":\"{{avalancheNodeId}}\",\n        \"startTime\":1613347036,\n        \"endTime\":1631215800,\n        \"stakeAmount\":200000000000,\n        \"rewardAddress\": \"{{pchainAddress}}\",\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.addDelegator\",\n    \"params\": {\n        \"nodeId\":\"{{ezchainNodeId}}\",\n        \"startTime\":1613347036,\n        \"endTime\":1631215800,\n        \"stakeAmount\":200000000000,\n        \"rewardAddress\": \"{{pchainAddress}}\",\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3702,7 +3729,7 @@
 								"P"
 							]
 						},
-						"description": "Add a delegator to the Default Subnet.\n\nA delegator stakes AVAX and specifies a validator (the delegatee) to validate on their behalf. The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.\n\nThe delegatee charges a fee to the delegator; the former receives a percentage of the delegator’s validation reward (if any.)\n\nThe delegation period must be a subset of the perdiod that the delegatee validates the Default Subnet. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformadddefaultsubnetdelegator)"
+						"description": "Add a delegator to the Default Subnet.\n\nA delegator stakes EZC and specifies a validator (the delegatee) to validate on their behalf. The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.\n\nThe delegatee charges a fee to the delegator; the former receives a percentage of the delegator’s validation reward (if any.)\n\nThe delegation period must be a subset of the perdiod that the delegatee validates the Default Subnet. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformadddefaultsubnetdelegator)"
 					},
 					"response": []
 				},
@@ -3713,7 +3740,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.addValidator\",\n    \"params\": {\n        \"nodeID\":\"{{avalancheNodeId}}\",\n        \"startTime\":1606245174,\n        \"endTime\":1608837056,\n        \"stakeAmount\":2000000000000,\n        \"rewardAddress\": \"{{pchainAddress}}\",\n        \"delegationFeeRate\":10,\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.addValidator\",\n    \"params\": {\n        \"nodeID\":\"{{ezchainNodeId}}\",\n        \"startTime\":1606245174,\n        \"endTime\":1608837056,\n        \"stakeAmount\":2000000000000,\n        \"rewardAddress\": \"{{pchainAddress}}\",\n        \"delegationFeeRate\":10,\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3733,7 +3760,7 @@
 								"P"
 							]
 						},
-						"description": "Add a validator to the Default Subnet. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformadddefaultsubnetvalidator)"
+						"description": "Add a validator to the Default Subnet. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformadddefaultsubnetvalidator)"
 					},
 					"response": []
 				},
@@ -3744,7 +3771,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.addSubnetValidator\",\n    \"params\": {\n        \"nodeID\":\"{{avalancheNodeId}}\",\n        \"subnetID\":\"{{avalancheSubnetId}}\",\n        \"startTime\":1625782598,\n        \"endTime\":1627078419,\n        \"weight\":20,\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.addSubnetValidator\",\n    \"params\": {\n        \"nodeID\":\"{{ezchainNodeId}}\",\n        \"subnetID\":\"{{ezchainSubnetId}}\",\n        \"startTime\":1625782598,\n        \"endTime\":1627078419,\n        \"weight\":20,\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3764,7 +3791,7 @@
 								"P"
 							]
 						},
-						"description": "Add a validator to a Subnet other than the Default Subnet. The validator must validate the Default Subnet for the entire duration they validate this Subnet. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformaddnondefaultsubnetvalidator)"
+						"description": "Add a validator to a Subnet other than the Default Subnet. The validator must validate the Default Subnet for the entire duration they validate this Subnet. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformaddnondefaultsubnetvalidator)"
 					},
 					"response": []
 				},
@@ -3775,7 +3802,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.createAddress\",\n    \"params\": {\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.createAddress\",\n    \"params\": {\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3795,7 +3822,7 @@
 								"P"
 							]
 						},
-						"description": "Add a delegator to the Default Subnet.\n\nA delegator stakes AVAX and specifies a validator (the delegatee) to validate on their behalf. The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.\n\nThe delegatee charges a fee to the delegator; the former receives a percentage of the delegator’s validation reward (if any.)\n\nThe delegation period must be a subset of the perdiod that the delegatee validates the Default Subnet. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformadddefaultsubnetdelegator)"
+						"description": "Add a delegator to the Default Subnet.\n\nA delegator stakes EZC and specifies a validator (the delegatee) to validate on their behalf. The delegatee has an increased probability of being sampled by other validators (weight) in proportion to the stake delegated to them.\n\nThe delegatee charges a fee to the delegator; the former receives a percentage of the delegator’s validation reward (if any.)\n\nThe delegation period must be a subset of the perdiod that the delegatee validates the Default Subnet. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformadddefaultsubnetdelegator)"
 					},
 					"response": []
 				},
@@ -3806,7 +3833,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.createBlockchain\",\n    \"params\" : {\n        \"vmID\":\"avm\",\n        \"SubnetID\":\"{{avalancheSubnetId}}\",\n        \"name\":\"My new avm\",\n        \"genesisData\": \"111115LHK2ZCYttSKPmmhsTDSuKiCkmHz65nUS1YqybvjirwGLLt376k1RwnTt72WobPqrG7rmgrKVqSq6VxDsKXYGnRmfhdLCEhsYjMegZmu5L5wEQ6k1BHu1QN6jk8kfoLQfAnKAxv8t5PmGJUwmTyoHz9aoDpfwJfkzjLut3TSSHzVLzH5bPoc5fYMwKGA1Zaps4Byo6rPpAZgiDG1jokzLuVXFDMxiFSDGHHA7uB5Nx2qaywtUXtyTi7JMYMKQMcB2UQEZbpPB9QcHg88mA8uzT2i5YYSiT9uZpAUjd6cfNiPedBJqi5AdjtcAmHvhszCS7YurbVmB4sHEP3PMxyKAHMnQ8dyxefQCDPUpSGMFp6qzomuXQSQeTi\",\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.createBlockchain\",\n    \"params\" : {\n        \"vmID\":\"avm\",\n        \"SubnetID\":\"{{ezchainSubnetId}}\",\n        \"name\":\"My new avm\",\n        \"genesisData\": \"111115LHK2ZCYttSKPmmhsTDSuKiCkmHz65nUS1YqybvjirwGLLt376k1RwnTt72WobPqrG7rmgrKVqSq6VxDsKXYGnRmfhdLCEhsYjM\",\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3826,7 +3853,7 @@
 								"P"
 							]
 						},
-						"description": "Create a new blockchain. Currently only supports creation of new instances of the AVM and the Timestamp VM. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformcreateblockchain)"
+						"description": "Create a new blockchain. Currently only supports creation of new instances of the AVM and the Timestamp VM. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformcreateblockchain)"
 					},
 					"response": []
 				},
@@ -3837,7 +3864,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.createSubnet\",\n    \"params\": {\n        \"controlKeys\":[\n            \"{{pchainAddress}}\"\n        ],\n        \"threshold\":1,\n        \"from\": [\"{{pchainAddress}}\"],\n        \"changeAddr\":\"{{pchainAddress}}\",\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.createSubnet\",\n    \"params\": {\n        \"controlKeys\":[\n            \"{{pchainAddress}}\"\n        ],\n        \"threshold\":1,\n        \"from\": [\"{{pchainAddress}}\"],\n        \"changeAddr\":\"{{pchainAddress}}\",\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3857,7 +3884,7 @@
 								"P"
 							]
 						},
-						"description": "Create an unsigned transaction to create a new Subnet.\n\nThe unsigned transaction must be signed with the key of the account paying the transaction fee.\n\nThe Subnet’s ID is the ID of the transaction that creates it (ie the response from `issueTx` when issuing the signed transaction. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformcreatesubnet)"
+						"description": "Create an unsigned transaction to create a new Subnet.\n\nThe unsigned transaction must be signed with the key of the account paying the transaction fee.\n\nThe Subnet’s ID is the ID of the transaction that creates it (ie the response from `issueTx` when issuing the signed transaction. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformcreatesubnet)"
 					},
 					"response": []
 				},
@@ -3888,7 +3915,7 @@
 								"P"
 							]
 						},
-						"description": "Get the balance of an asset controlled by a given address. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetbalance)"
+						"description": "Get the balance of an asset controlled by a given address. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetbalance)"
 					},
 					"response": []
 				},
@@ -3919,7 +3946,7 @@
 								"P"
 							]
 						},
-						"description": "Get all the blockchains that exist (excluding the P-Chain). [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetblockchains)"
+						"description": "Get all the blockchains that exist (excluding the P-Chain). [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetblockchains)"
 					},
 					"response": []
 				},
@@ -3950,7 +3977,7 @@
 								"P"
 							]
 						},
-						"description": "Get all the blockchains that exist (excluding the P-Chain). [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetblockchains)"
+						"description": "Get all the blockchains that exist (excluding the P-Chain). [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetblockchains)"
 					},
 					"response": []
 				},
@@ -3961,7 +3988,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.getBlockchainStatus\",\n    \"params\":{\n        \"blockchainID\":\"{{avalanceBlockchainId}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.getBlockchainStatus\",\n    \"params\":{\n        \"blockchainID\":\"{{ezchainBlockchainId}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3981,7 +4008,7 @@
 								"P"
 							]
 						},
-						"description": "Get the status of a blockchain. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetblockchainstatus)"
+						"description": "Get the status of a blockchain. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetblockchainstatus)"
 					},
 					"response": []
 				},
@@ -4012,7 +4039,38 @@
 								"P"
 							]
 						},
-						"description": "Returns an upper bound on the number of AVAX that exist. This is an upper bound because it does not account for burnt tokens, including transaction fees. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetcurrentsupply)"
+						"description": "Returns an upper bound on the number of EZC that exist. This is an upper bound because it does not account for burnt tokens, including transaction fees. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetcurrentsupply)"
+					},
+					"response": []
+				},
+				{
+					"name": "getTotalStake",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"platform.getTotalStake\",\n    \"params\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/P",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ext",
+								"bc",
+								"P"
+							]
+						},
+						"description": "Get the total amount of nEZC staked on the Primary Network. [More info](https://docs.ezchain.com/build/ezcgo-apis/p-chain#platformgettotalstake)"
 					},
 					"response": []
 				},
@@ -4043,7 +4101,38 @@
 								"P"
 							]
 						},
-						"description": "List the current validators of the given Subnet. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetcurrentvalidators)"
+						"description": "List the current validators of the given Subnet. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetcurrentvalidators)"
+					},
+					"response": []
+				},
+				{
+					"name": "getMaxStakeAmount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.getMaxStakeAmount\",\n    \"params\": {\n        \"subnetID\":\"\",\n        \"nodeID\":\"\",\n        \"startTime\": 123,\n        \"endTime\": 321\n    },\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/P",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ext",
+								"bc",
+								"P"
+							]
+						},
+						"description": "List the current validators of the given Subnet. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetcurrentvalidators)"
 					},
 					"response": []
 				},
@@ -4074,7 +4163,7 @@
 								"P"
 							]
 						},
-						"description": "Returns the height of the last accepted block [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetheight)"
+						"description": "Returns the height of the last accepted block [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetheight)"
 					},
 					"response": []
 				},
@@ -4105,7 +4194,7 @@
 								"P"
 							]
 						},
-						"description": "Returns the minimum stake amount [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetminstake)"
+						"description": "Returns the minimum stake amount [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetminstake)"
 					},
 					"response": []
 				},
@@ -4167,7 +4256,7 @@
 								"P"
 							]
 						},
-						"description": "Returns the staked amount for an array of addresses [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetstake)"
+						"description": "Returns the staked amount for an array of addresses [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetstake)"
 					},
 					"response": []
 				},
@@ -4229,7 +4318,7 @@
 								"P"
 							]
 						},
-						"description": "List the validators in the pending validator set of the specified Subnet. Each validator is not currently validating the Subnet but will in the future. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetpendingvalidators)"
+						"description": "List the validators in the pending validator set of the specified Subnet. Each validator is not currently validating the Subnet but will in the future. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetpendingvalidators)"
 					},
 					"response": []
 				},
@@ -4260,7 +4349,7 @@
 								"P"
 							]
 						},
-						"description": "Retrieve an assetID for a subnet’s staking asset. Currently this always returns the Primary Network’s staking assetID. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetstakingassetid)"
+						"description": "Retrieve an assetID for a subnet’s staking asset. Currently this always returns the Primary Network’s staking assetID. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetstakingassetid)"
 					},
 					"response": []
 				},
@@ -4291,7 +4380,7 @@
 								"P"
 							]
 						},
-						"description": "Get all the Subnets that exist. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformgetsubnets)"
+						"description": "Get all the Subnets that exist. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformgetsubnets)"
 					},
 					"response": []
 				},
@@ -4322,7 +4411,38 @@
 								"P"
 							]
 						},
-						"description": "Returns the specified transaction [More info](https://docs.avax.network/v1.0/en/api/avm/#avmgetbalance)"
+						"description": "Returns the specified transaction [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmgetbalance)"
+					},
+					"response": []
+				},
+				{
+					"name": "getTimestamp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"platform.getTimestamp\",\n    \"params\" :{}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/ext/bc/P",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ext",
+								"bc",
+								"P"
+							]
+						},
+						"description": "Returns the specified transaction [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmgetbalance)"
 					},
 					"response": []
 				},
@@ -4353,7 +4473,7 @@
 								"P"
 							]
 						},
-						"description": "Returns the specified transaction [More info](https://docs.avax.network/v1.0/en/api/avm/#avmgetbalance)"
+						"description": "Returns the specified transaction [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmgetbalance)"
 					},
 					"response": []
 				},
@@ -4364,7 +4484,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"platform.getUTXOs\",\n    \"params\" :{\n        \"addresses\":[\"P-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u\"],\n        \"sourceChain\": \"X\",\n        \"limit\": 5,\n        \"encoding\": \"hex\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"platform.getUTXOs\",\n    \"params\" :{\n        \"addresses\":[\"P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p\"],\n        \"sourceChain\": \"X\",\n        \"limit\": 5,\n        \"encoding\": \"hex\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4384,7 +4504,7 @@
 								"P"
 							]
 						},
-						"description": "Get the UTXOs that reference a given address. [More info](https://docs.avax.network/v1.0/en/api/avm/#avmgetutxos)"
+						"description": "Get the UTXOs that reference a given address. [More info](https://docs.ezchain.com/v1.0/en/api/avm/#avmgetutxos)"
 					},
 					"response": []
 				},
@@ -4415,18 +4535,18 @@
 								"P"
 							]
 						},
-						"description": "Get the validators and their weights of a subnet or the Primary Network at a given P-Chain height. [More info](https://docs.avax.network/build/avalanchego-apis/platform-chain-p-chain-api#platform-getvalidatorsat)"
+						"description": "Get the validators and their weights of a subnet or the Primary Network at a given P-Chain height. [More info](https://docs.ezchain.com/build/ezcgo-apis/platform-chain-p-chain-api#platform-getvalidatorsat)"
 					},
 					"response": []
 				},
 				{
-					"name": "exportAVAX",
+					"name": "exportEZC",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.exportAVAX\",\n    \"params\": {\n        \"to\":\"{{xchainAddress}}\",\n        \"amount\":54321,\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.exportEZC\",\n    \"params\": {\n        \"to\":\"{{xchainAddress}}\",\n        \"amount\":54321,\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4446,7 +4566,7 @@
 								"P"
 							]
 						},
-						"description": "Send AVAX from an account on the C-Chain to an address on the X-Chain.\nThis transaction must be signed with the key of the account that the AVAX is sent from and which pays the transaction fee.\nAfter issuing this transaction, you must call the X-Chain’s `importAVA` method to complete the transfer. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformexportavax)"
+						"description": "Send EZC from an account on the C-Chain to an address on the X-Chain.\nThis transaction must be signed with the key of the account that the EZC is sent from and which pays the transaction fee.\nAfter issuing this transaction, you must call the X-Chain’s `importEZC` method to complete the transfer. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformexportEZC)"
 					},
 					"response": []
 				},
@@ -4457,7 +4577,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"platform.exportKey\",\n    \"params\" :{\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\",\n        \"address\": \"{{pchainAddress}}\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"platform.exportKey\",\n    \"params\" :{\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\",\n        \"address\": \"{{pchainAddress}}\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4477,18 +4597,18 @@
 								"P"
 							]
 						},
-						"description": "Get the private key that controls a given address.\nThe returned private key can be added to a user with `platform.importKey`. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformexportkey)"
+						"description": "Get the private key that controls a given address.\nThe returned private key can be added to a user with `platform.importKey`. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformexportkey)"
 					},
 					"response": []
 				},
 				{
-					"name": "importAVAX",
+					"name": "importEZC",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.importAVAX\",\n    \"params\": {\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\",\n        \"sourceChain\": \"X\",\n        \"to\":\"{{pchainAddress}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.importEZC\",\n    \"params\": {\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\",\n        \"sourceChain\": \"X\",\n        \"to\":\"{{pchainAddress}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4508,7 +4628,7 @@
 								"P"
 							]
 						},
-						"description": "Complete a transfer of AVAX from the X-Chain to the C-Chain.\n\nBefore this method is called, you must call the X-Chain’s `exportAVAX` method to initiate the transfer. [More Info](https://docs.avax.network/v1.0/en/api/platform/#avmimportava)"
+						"description": "Complete a transfer of EZC from the X-Chain to the C-Chain.\n\nBefore this method is called, you must call the X-Chain’s `exportEZC` method to initiate the transfer. [More Info](https://docs.ezchain.com/v1.0/en/api/platform/#avmimportezc)"
 					},
 					"response": []
 				},
@@ -4519,7 +4639,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"platform.importKey\",\n    \"params\" :{\n        \"username\":\"{{avalancheUsername}}\",\n        \"password\":\"{{avalanchePassword}}\",\n        \"privateKey\":\"{{privkey}}\"\n    }\n}",
+							"raw": "{\n    \"jsonrpc\":\"2.0\",\n    \"id\"     :1,\n    \"method\" :\"platform.importKey\",\n    \"params\" :{\n        \"username\":\"{{ezchainUsername}}\",\n        \"password\":\"{{ezchainPassword}}\",\n        \"privateKey\":\"{{privkey}}\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4539,7 +4659,7 @@
 								"P"
 							]
 						},
-						"description": "Give a user control over an address by providing the private key that controls the address. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformimportkey)"
+						"description": "Give a user control over an address by providing the private key that controls the address. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformimportkey)"
 					},
 					"response": []
 				},
@@ -4570,7 +4690,7 @@
 								"P"
 							]
 						},
-						"description": "Issue a transaction to the Platform Chain. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformissuetx)"
+						"description": "Issue a transaction to the Platform Chain. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformissuetx)"
 					},
 					"response": []
 				},
@@ -4581,7 +4701,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.listAddresses\",\n    \"params\": {\n        \"username\": \"{{avalancheUsername}}\",\n        \"password\": \"{{avalanchePassword}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.listAddresses\",\n    \"params\": {\n        \"username\": \"{{ezchainUsername}}\",\n        \"password\": \"{{ezchainPassword}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4601,7 +4721,7 @@
 								"P"
 							]
 						},
-						"description": "List the addresses controlled by the given user. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformlistaddresses)"
+						"description": "List the addresses controlled by the given user. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformlistaddresses)"
 					},
 					"response": []
 				},
@@ -4632,7 +4752,7 @@
 								"P"
 							]
 						},
-						"description": "Sample validators from the specified Subnet. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformsamplevalidators)"
+						"description": "Sample validators from the specified Subnet. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformsamplevalidators)"
 					},
 					"response": []
 				},
@@ -4643,7 +4763,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.validatedBy\",\n    \"params\": {\n        \"blockchainID\": \"{{avalanceBlockchainId}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.validatedBy\",\n    \"params\": {\n        \"blockchainID\": \"{{ezchainBlockchainId}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4663,7 +4783,7 @@
 								"P"
 							]
 						},
-						"description": "Get the Subnet that validates a given blockchain. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformvalidatedby)"
+						"description": "Get the Subnet that validates a given blockchain. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformvalidatedby)"
 					},
 					"response": []
 				},
@@ -4674,7 +4794,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.validates\",\n    \"params\": {\n        \"subnetID\":\"{{avalancheSubnetId}}\"\n    },\n    \"id\": 1\n}",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"platform.validates\",\n    \"params\": {\n        \"subnetID\":\"{{ezchainSubnetId}}\"\n    },\n    \"id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4694,320 +4814,12 @@
 								"P"
 							]
 						},
-						"description": "Get the IDs of the blockchains a Subnet validates. [More info](https://docs.avax.network/v1.0/en/api/platform/#platformvalidates)"
+						"description": "Get the IDs of the blockchains a Subnet validates. [More info](https://docs.ezchain.com/v1.0/en/api/platform/#platformvalidates)"
 					},
 					"response": []
 				}
 			],
-			"description": "This API allows clients to interact with the P-Chain (Platform Chain), which maintains Avalanche’s validator set and handles blockchain creation. [More info](https://docs.avax.network/v1.0/en/api/platform)"
-		},
-		{
-			"name": "Ortelius",
-			"item": [
-				{
-					"name": "List Transactions",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"address\": [\n        \"fuji18jma8ppw3nhx5r4ap8clazz0dps7rv5u6wmu4t\"\n    ],\n    \"sort\": [\n        \"timestamp-desc\"\n    ],\n    \"disableCount\": [\n        \"1\"\n    ],\n    \"chainID\": [\n        \"11111111111111111111111111111111LpoYY\"\n    ],\n    \"disableGenesis\": [\n        \"false\"\n    ],\n    \"limit\": [\n        \"20\"\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://45.76.183.104:8080/v2/transactions",
-							"protocol": "http",
-							"host": [
-								"45",
-								"76",
-								"183",
-								"104"
-							],
-							"port": "8080",
-							"path": [
-								"v2",
-								"transactions"
-							]
-						},
-						"description": "Find transactions that have been accepted."
-					},
-					"response": []
-				},
-				{
-					"name": "Get Transaction",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://45.76.183.104:8080/v2/transactions/2jEugPDFN89KXLEXtf5oKp5spsJawTht2zP4kKJjkQwwRsDdLX",
-							"protocol": "http",
-							"host": [
-								"45",
-								"76",
-								"183",
-								"104"
-							],
-							"port": "8080",
-							"path": [
-								"v2",
-								"transactions",
-								"2jEugPDFN89KXLEXtf5oKp5spsJawTht2zP4kKJjkQwwRsDdLX"
-							]
-						},
-						"description": "Find a single transaction by its ID."
-					},
-					"response": []
-				},
-				{
-					"name": "List Addresses",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://45.76.183.104:8080/v2/addresses",
-							"protocol": "http",
-							"host": [
-								"45",
-								"76",
-								"183",
-								"104"
-							],
-							"port": "8080",
-							"path": [
-								"v2",
-								"addresses"
-							]
-						},
-						"description": "- Find addresses that have been referenced in accepted transactions.\n- Can be filtered by chainID or address"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Address",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://45.76.183.104:8080/v2/addresses/fuji1yx8d9uxhqkq080eq0y84axyqe6z3r5n4dwnd8g",
-							"protocol": "http",
-							"host": [
-								"45",
-								"76",
-								"183",
-								"104"
-							],
-							"port": "8080",
-							"path": [
-								"v2",
-								"addresses",
-								"fuji1yx8d9uxhqkq080eq0y84axyqe6z3r5n4dwnd8g"
-							]
-						},
-						"description": "Find a single address by its ID."
-					},
-					"response": []
-				},
-				{
-					"name": "List Assets",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://45.76.183.104:8080/v2/assets",
-							"protocol": "http",
-							"host": [
-								"45",
-								"76",
-								"183",
-								"104"
-							],
-							"port": "8080",
-							"path": [
-								"v2",
-								"assets"
-							]
-						},
-						"description": "Find assets that have been created on the X-chain."
-					},
-					"response": []
-				},
-				{
-					"name": "Get Asset",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://45.76.183.104:8080/v2/assets/2b5EBv57UhJ5QbcApsgpmr3NiQoqed3w15xKqmm1GQ1JytPtZ2",
-							"protocol": "http",
-							"host": [
-								"45",
-								"76",
-								"183",
-								"104"
-							],
-							"port": "8080",
-							"path": [
-								"v2",
-								"assets",
-								"2b5EBv57UhJ5QbcApsgpmr3NiQoqed3w15xKqmm1GQ1JytPtZ2"
-							]
-						},
-						"description": "Find a single asset by its ID."
-					},
-					"response": []
-				},
-				{
-					"name": "List Outputs",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://45.76.183.104:8080/v2/outputs?address=X-avax1y8cyrzn2kg4udccs5d625gkac7a99pe452cy5u&spent=false",
-							"protocol": "http",
-							"host": [
-								"45",
-								"76",
-								"183",
-								"104"
-							],
-							"port": "8080",
-							"path": [
-								"v2",
-								"outputs"
-							],
-							"query": [
-								{
-									"key": "address",
-									"value": "X-avax1y8cyrzn2kg4udccs5d625gkac7a99pe452cy5u"
-								},
-								{
-									"key": "spent",
-									"value": "false"
-								}
-							]
-						},
-						"description": "Find outputs that have been created by an accepted transaction."
-					},
-					"response": []
-				},
-				{
-					"name": "Get Output",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://45.76.183.104:8080/v2/outputs/114RMPhYM7do7cDX7KWSqFeLkbUXFrLKcqPL4GMdjTvemPzvc",
-							"protocol": "http",
-							"host": [
-								"45",
-								"76",
-								"183",
-								"104"
-							],
-							"port": "8080",
-							"path": [
-								"v2",
-								"outputs",
-								"114RMPhYM7do7cDX7KWSqFeLkbUXFrLKcqPL4GMdjTvemPzvc"
-							]
-						},
-						"description": "Find a single output by its ID."
-					},
-					"response": []
-				},
-				{
-					"name": "Get a C-Chain Block",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://45.76.183.104:8080/v2/ctxdata/10",
-							"protocol": "http",
-							"host": [
-								"45",
-								"76",
-								"183",
-								"104"
-							],
-							"port": "8080",
-							"path": [
-								"v2",
-								"ctxdata",
-								"10"
-							]
-						},
-						"description": "Find a single block by its number."
-					},
-					"response": []
-				},
-				{
-					"name": "List C-Chain Transactions",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://45.76.183.104:8080/v2/ctransactions?toAddress=0x34ec164fd085ae43906eab6dffd1eae0a0855a2a&blockStart=797380&blockEnd=797381",
-							"protocol": "http",
-							"host": [
-								"45",
-								"76",
-								"183",
-								"104"
-							],
-							"port": "8080",
-							"path": [
-								"v2",
-								"ctransactions"
-							],
-							"query": [
-								{
-									"key": "toAddress",
-									"value": "0x34ec164fd085ae43906eab6dffd1eae0a0855a2a"
-								},
-								{
-									"key": "blockStart",
-									"value": "797380"
-								},
-								{
-									"key": "blockEnd",
-									"value": "797381"
-								}
-							]
-						},
-						"description": "Find accepted C-Chain transactions."
-					},
-					"response": []
-				},
-				{
-					"name": "Get a Raw C-Chain Transaction",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://45.76.183.104:8080/v2/rawtransaction/pxiBJkwnaKhaJdYkkfAVRZXrJj47jJF3QAvsasbYF2Rfweoog",
-							"protocol": "http",
-							"host": [
-								"45",
-								"76",
-								"183",
-								"104"
-							],
-							"port": "8080",
-							"path": [
-								"v2",
-								"rawtransaction",
-								"pxiBJkwnaKhaJdYkkfAVRZXrJj47jJF3QAvsasbYF2Rfweoog"
-							]
-						},
-						"description": "Get an accepted C-Chain transaction by its ID."
-					},
-					"response": []
-				}
-			]
+			"description": "This API allows clients to interact with the P-Chain (Platform Chain), which maintains EZChain’s validator set and handles blockchain creation. [More info](https://docs.ezchain.com/v1.0/en/api/platform)"
 		}
 	]
 }
